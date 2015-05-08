@@ -7,7 +7,7 @@ from django.db import models
 #		return self.nombre
 
 
-class Usuarios(object):
+class Usuarios(models.Model):
 	nombre = models.CharField(max_length=225,verbose_name=u'Nombre')
 	paterno = models.CharField(max_length=225, verbose_name=u'Apellido Paterno')
 	materno = models.CharField(max_length=225, blank=True, null=True, verbose_name=u'Apellido Materno')
