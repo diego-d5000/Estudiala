@@ -7,14 +7,14 @@ from django.db import models
 #		return self.nombre
 
 
-class Usuarios(models.Model):
-	nombre = models.CharField(max_length=225,verbose_name=u'Nombre')
-	paterno = models.CharField(max_length=225, verbose_name=u'Apellido Paterno')
-	materno = models.CharField(max_length=225, blank=True, null=True, verbose_name=u'Apellido Materno')
-	correo = models.EmailField(max_length=225, verbose_name=u'Correo', unique=True)
-	nombre_usuario = models.CharField(max_length=225, verbose_name=u'Nombre de Usuario', unique=True)
-	contra = models.CharField(max_length=225, verbose_name=u'Contrasenia')
-	tipo = models.CharField(max_length=225, verbose_name=u'Tipo de Usuario')
+class Usuario(models.Model):
+	name = models.CharField(max_length=225,verbose_name=u'Nombre')
+	middle_name = models.CharField(max_length=225, verbose_name=u'Apellido Paterno')
+	last_name = models.CharField(max_length=225, blank=True, null=True, verbose_name=u'Apellido Materno')
+	email = models.EmailField(max_length=225, verbose_name=u'Correo', unique=True)
+	user_name = models.CharField(max_length=225, verbose_name=u'Nombre de Usuario', unique=True)
+	password = models.CharField(max_length=225, verbose_name=u'Contrasenia')
+	user_type = models.CharField(max_length=225, verbose_name=u'Tipo de Usuario')
 	#tipo = models.ForeignKey(Tipo)
 
 	def __unicode__(self):
