@@ -1,7 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 from .models import Usuario
+
 
 #Signup Form
 class NewUserCreationForm(UserCreationForm):
@@ -13,6 +15,7 @@ class NewUserCreationForm(UserCreationForm):
 		model = User
 		fields = ('username','email', 'first_name', 'last_name')
 
+#Information Form
 class UserInformationForm(forms.ModelForm):
 
 	def save(self,user,*args,**kwargs):
