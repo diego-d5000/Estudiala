@@ -1,10 +1,10 @@
 from django.db import models
 
-#class Tipo(object):
-#	tipo_usuario = models.CharField(max_length=225, verbose_name=u'Tipo de Usuario')
+class Tipo(models.Model):
+	tipo_usuario = models.CharField(max_length=225, verbose_name=u'Tipo de Usuario')
 
-#	def __unicode__(self):
-#		return self.nombre
+	def __unicode__(self):
+		return self.nombre
 
 
 class Usuario(models.Model):
@@ -14,9 +14,8 @@ class Usuario(models.Model):
 	email = models.EmailField(max_length=225, verbose_name=u'Correo', unique=True)
 	user_name = models.CharField(max_length=225, verbose_name=u'Nombre de Usuario', unique=True)
 	password = models.CharField(max_length=225, verbose_name=u'Contrasenia')
-	user_type = models.CharField(max_length=225, verbose_name=u'Tipo de Usuario')
-	#tipo = models.ForeignKey(Tipo)
+	user_type = models.ForeignKey(Tipo)
 
 	def __unicode__(self):
-		return self.nombre + '' + self.paterno
+		return self.nombre + ' ' + self.paterno
 
