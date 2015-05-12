@@ -1,0 +1,71 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../core-icons/core-icons.html">
+<link rel="import" href="../font-roboto/roboto.html">
+<link rel="import" href="../paper-fab/paper-fab.html">
+<link rel="import" href="../core-tooltip/core-tooltip.html">
+<link rel="import" href="../paper-dialog/paper-action-dialog.html">
+<link rel="import" href="../google-hangout-button/google-hangout-button.html">
+
+<polymer-element name="nuevasala-fab" attributes="">
+  <template>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="nuevasala-fab.css">
+
+    <paper-fab icon="account-balance" title="nuevasala" on-click={{fabclick}}></paper-fab>
+    
+    <paper-action-dialog id="dialog" backdrop autoCloseDisabled layered="false">
+      <core-tooltip label="1. Dale nombre a la sala" position="top" class="dialogcont" show>
+      <paper-input id="roomname" label="Nombre de la Sala" floatingLabel></paper-input>
+      </core-tooltip>
+      
+      <core-tooltip label="2. Inicia el Hangout Onair" position="top" class="dialogcont" show>
+      <google-hangout-button type="onair" width="175" topic="{{roomname}}" id="hangout" ></google-hangout-button>
+      </core-tooltip>
+      
+      <core-tooltip label="3. Coloca el ID de tu Hangout" position="top" class="dialogcont" show>
+      <paper-input id="urlid" label="URL de Hangout" floatingLabel></paper-input>
+      </core-tooltip>position="top" 
+    
+      <paper-button on-click="{{newroom}}" affirmative autofocus>Crear</paper-button>
+    </paper-action-dialog>
+  </template>
+
+  <script>
+    Polymer('nuevasala-fab', {
+
+      ready: function() {
+        this.socket = io();
+        
+        this.urlid = this.$.urlid.value,
+      
+        this.roomname = this.$.roomname.value
+      },
+      
+      fabclick: function() {
+        this.$.dialog.toggle();
+      },
+      
+      newroom: function() {
+        function YouTubeGetID(url){
+          var ID = '';
+          url = url.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+          if(url[2] !== undefined) {
+            ID = url[2].split(/[^0-9a-z_\-]/i);
+            ID = ID[0];
+          }
+          else {
+            ID = url;
+          }
+            return ID;
+        }
+        
+        this.socket.emit("newroom", YouTubeGetID(this.$.urlid.value));
+        location.href = "/rooms/" + YouTubeGetID(this.$.urlid.value);
+      }
+      
+    });
+  </script>
+</polymer-element>

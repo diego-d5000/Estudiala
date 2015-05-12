@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from classroom import urls as cl_urls
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -23,4 +24,5 @@ urlpatterns = [
     url(r'^close/', 'usuarios.views.close', name='close'),
     url(r'^information/','usuarios.views.information', name='information'),
     url(r'^homework/','tareas.views.homework', name='homework'),
+    url(r'^classroom/', include(cl_urls))
 ]

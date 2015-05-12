@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sala (Base)</title>
+		{% load staticfiles %}
+	<script src="{% static "components/webcomponentsjs/webcomponents.js" %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static "classroom/css/style.css" %}">
+	<link rel="import" href="{% static "components/socketchat/x-socketchat.html" %}">
+	<link rel="import" href="{% static "components/paper-shadow/paper-shadow.html" %}">
+	<link rel="import" href="{% static "components/font-roboto/roboto.html" %}">
+	<link rel="import" href="{% static "components/google-youtube/google-youtube.html" %}">
+</head>
+<body>
+	<div horizontal layout>
+		<paper-shadow id="card-video" z="2" class="card">
+			<google-youtube
+			  videoid="{{num}}"
+			  height="450px"
+			  width="100%">
+			</google-youtube>
+		</paper-shadow>
+		<x-socketchat lheight="500px" namespace=":3000/{{num}}" user="{{user}}">
+	</div>
+	<paper-shadow z="1" id="card-desc" class="card"> <h1> DESCRIPCIÓN </h1> </paper-shadow>
+</body>
+</html>
