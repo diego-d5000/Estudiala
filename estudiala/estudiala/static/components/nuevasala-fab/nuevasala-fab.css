@@ -1,0 +1,54 @@
+:host {
+  display: block;
+}
+
+:host *,
+::content * {
+  font-family: Helvetica, sans-serif;
+}
+
+::content > * {
+  border: 1px solid #aaa;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+::content * {
+  font-size: 16px;
+  padding: 10px;
+}
+
+#title {
+  font-size: 20px;
+  margin: 0 0 20px 0;
+}
+
+[autofocus] {
+      color: #03a9f4;
+    }
+
+.scrolling::shadow #scroller {
+      height: 350px;
+    }
+
+.colored {
+      border: 1px solid #0f9d58;
+      background-color: #b7e1cd;
+      color: #0f9d58;
+    }
+
+.size-position {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+    }
+
+.size-position::shadow #scroller {
+      width: 300px;
+      height: 300px;
+    }
+    
+.dialogcont {
+  margin-top: 2em;
+  margin-left: 2em;
+  margin-right: 2em;
+}

@@ -1,0 +1,31 @@
+{
+  "name": "google-hangout-button",
+  "version": "0.1.0",
+  "homepage": "http://googlewebcomponents.github.io/google-hangout-button",
+  "description": "Google Hangout button web component",
+  "main": "google-hangout-button.html",
+  "authors": [
+    "Ewa Gasperowicz"
+  ],
+  "license": "Apache-2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "../"
+  ],
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "hangouts",
+    "google"
+  ],
+  "dependencies": {
+    "google-apis": "GoogleWebComponents/google-apis#~0.4.2",
+    "polymer-test-tools": "Polymer/polymer-test-tools#~0.4.0",
+    "sinon-browser-only": "~1.9.0"
+  }
+}

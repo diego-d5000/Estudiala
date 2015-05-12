@@ -1,0 +1,9 @@
+{
+  "name": "nuevasala-fab",
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5.5",
+    "paper-elements": "Polymer/paper-elements#^0.5.5",
+    "google-hangout-button": "GoogleWebComponents/google-hangout-button"
+  }
+}
