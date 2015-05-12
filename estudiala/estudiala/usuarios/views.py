@@ -13,6 +13,10 @@ def signup(request):
 
 	if form.is_valid():
 		form.save()
+		return redirect('information')
+
+	#loguear al usuario directamente
+	#redireccionar a information
 
 	return render(request,'signup.html', {'form' : form})
 

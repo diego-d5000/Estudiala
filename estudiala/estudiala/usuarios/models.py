@@ -14,5 +14,5 @@ class Usuario(models.Model):
 	user = models.ForeignKey(User)
 
 	def __unicode__(self):
-		return self.name + ' ' + self.middle_name
+		return self.description
 

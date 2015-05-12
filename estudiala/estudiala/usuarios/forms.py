@@ -11,9 +11,13 @@ class NewUserCreationForm(UserCreationForm):
 	first_name = forms.CharField()
 	last_name = forms.CharField()
 
+	#validar que el email no exista
+
 	class Meta:
 		model = User
 		fields = ('username','email', 'first_name', 'last_name')
+
+#	def clean_email():
 
 #Information Form
 class UserInformationForm(forms.ModelForm):
