@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from django.views.generic import TemplateView
 
-class Room:
+class Room(TemplateView):
 	def get(self, req):
 		if req.GET["n"] :
 			num = req.GET["n"]
