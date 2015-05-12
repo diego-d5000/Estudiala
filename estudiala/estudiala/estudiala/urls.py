@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^signin/', 'usuarios.views.signin', name='signin'),
     url(r'^close/', 'usuarios.views.close', name='close'),
     url(r'^information/','usuarios.views.information', name='information'),
+    url(r'^homework/','tareas.views.homework', name='homework'),
 ]
