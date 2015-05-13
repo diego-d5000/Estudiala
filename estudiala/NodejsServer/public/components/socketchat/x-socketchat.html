@@ -1,0 +1,65 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-shadow/paper-shadow.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../core-icons/core-icons.html">
+<link rel="import" href="../font-roboto/roboto.html">
+<link rel="import" href="../paper-fab/paper-fab.html">
+<link rel="import" href="../core-list/core-list.html">
+<link rel="import" href="../core-item/core-item.html">
+
+<polymer-element name="x-socketchat" attributes="namespace lheight user role">
+  <template>
+    <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+    <link rel="stylesheet" href="x-socketchat.css">
+    <paper-shadow z="1" class="card">
+      <core-list data="{{data}}" style="height: {{lheight}}">
+        <template>
+          <core-item icon="account-circle" class="message {{ {moderator: model.role == 'moderador' || model.role == 'profesor'} | tokenList}}">
+            <div flex>
+               <div class="muser">{{model.user}}</div>
+              <div class="mtxt">{{model.txt}}</div>
+              <div class="mdate">{{model.date}}</div>
+            </div>
+          </core-item>
+        </template>
+      </core-list>
+      <paper-input label="" id="msgTxt"></paper-input>
+      <paper-fab mini type="submit" icon="send" title="send" on-click={{sendMsg}}></paper-fab>
+    </paper-shadow>
+
+  </template>
+  <script>
+    Polymer('x-socketchat', {
+
+      namespace: '',
+      
+      lheight: '',
+      
+      user: '',
+      
+      role: '',
+      
+      data: [],
+
+      ready: function() {
+        this.socket = io(this.namespace);
+        this.data;
+        this.socket.on('chat message', function(msg){
+         document.querySelector('x-socketchat').data.push(msg);
+        });
+      },
+
+      attrChanged: function() {
+      },
+
+      task: function(dummy) {
+      },
+      
+      sendMsg: function() {
+        this.socket.emit('chat message', {txt: this.$.msgTxt.value, user: this.user, role: this.role});
+        this.$.msgTxt.value = "";
+      }
+      
+    });
+  </script>
+</polymer-element>

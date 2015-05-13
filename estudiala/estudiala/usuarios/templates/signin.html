@@ -1,16 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Login</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
+    <title>Estudiame.la</title>
+    <!-- Favicons-->
+    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="http://materializecss.com/images/favicon/mstile-144x144.png">
+    <link rel="icon" href="http://materializecss.com/images/favicon/favicon-32x32.png" sizes="32x32">
+    <!--  Android 5 Chrome Color-->
+    <meta name="theme-color" content="#EE6EF3">
+    <!-- CSS-->
+    <link href="http://materializecss.com/css/prism.css" rel="stylesheet">
+    <link href="http://materializecss.com/css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+    
+    <script src="//cdn.transifex.com/live.js"></script>
 </head>
 <body>
-	<section>
-		<form action="" method="post">
-			{% csrf_token %}
-			{{form.as_p}}
-			<input type="submit" value="Submit">
-		</form>
-	</section>	
+
+	<header>
+      <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav waves-effect waves-light circle"><i class="mdi-navigation-menu"></i></a></div>
+      <ul id="nav-mobile" class="side-nav fixed">
+        <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
+            <object id="front-page-logo" type="image/svg+xml" data="assets/logo.svg"></object></a></li>
+        <li class="bold"><a href="http://127.0.0.1:8000/signin/?next=/information/" class="waves-effect waves-teal">Inicio</a></li>
+        <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Cursos</a></li>
+        <li class="no-padding">
+          <ul class="collapsible collapsible-accordion">
+            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">Cursos</a>
+              <div class="collapsible-body">
+                <ul>
+                  <li><a href="http://materializecss.com/color.html">Matemáticas</a></li>
+                  <li><a href="http://materializecss.com/grid.html">Programación</a></li>
+                  <li><a href="http://materializecss.com/helpers.html">Ingeniería</a></li>
+                </ul>
+              </div>
+            </li>
+            
+            
+            </li>
+          </ul>
+        </li>
+        <li class="bold"><a href="http://materializecss.com/mobile.html" class="waves-effect waves-teal">Tu perfil</a></li>
+        <li class="bold"><a href="http://materializecss.com/imshowcase.html" class="waves-effect waves-teal">Información</a></li>
+      </ul>
+    </header>
+		<section>
+			<form action="" method="post">
+				{% csrf_token %}
+				{{form.as_p}}
+				<input type="submit" value="Submit">
+			</form>
+		</section>	
+		
+	
 </body>
 </html>
