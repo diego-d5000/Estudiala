@@ -19,10 +19,11 @@ from classroom import urls as cl_urls
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', 'usuarios.views.home', name='home'),
     url(r'^signup/', 'usuarios.views.signup', name='signup'),
     url(r'^signin/', 'usuarios.views.signin', name='signin'),
     url(r'^close/', 'usuarios.views.close', name='close'),
     url(r'^information/','usuarios.views.information', name='information'),
     url(r'^homework/','tareas.views.homework', name='homework'),
-    url(r'^classroom/', include(cl_urls))
+    url(r'^classroom/', include(cl_urls)),
 ]

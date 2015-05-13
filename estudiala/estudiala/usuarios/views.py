@@ -53,3 +53,10 @@ def information(request):
 def close(request):
 	logout(request)
 	return redirect('signin')
+
+def home(request):
+    return render(
+        request,
+        'index.html',
+        {}
+    )
