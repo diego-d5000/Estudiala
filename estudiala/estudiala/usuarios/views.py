@@ -60,3 +60,33 @@ def home(request):
         'index.html',
         {}
     )
+
+def math_course(request):
+	return render(
+		request,
+		'cursos/matematicas.html',
+		{}
+	)
+
+def programming_course(request):
+	return render(
+		request,
+		'cursos/programacion.html',
+		{}
+	)
+
+def kitchen_course(request):
+	return render(
+		request,
+		'cursos/cocina.html',
+		{}
+	)
+
+@login_required(login_url='signin')
+def user_profile(request):
+	return render(
+		request,
+		'perfil.html',
+		{}
+	)
+
