@@ -31,6 +31,11 @@
     
       <paper-button on-click="{{newroom}}" affirmative autofocus>Crear</paper-button>
     </paper-action-dialog>
+
+    <core-ajax id="ajaxpost"
+    url="http://localhost:8000/classroom/room/"
+    method="post"></core-ajax>
+
   </template>
 
   <script>
@@ -61,9 +66,13 @@
           }
             return ID;
         }
-        
-        this.socket.emit("newroom", YouTubeGetID(this.$.urlid.value));
-        location.href = "/rooms/" + YouTubeGetID(this.$.urlid.value);
+
+        this.nid = YouTubeGetID(this.$.urlid.value)
+
+        this.$.ajaxpost.params = {"name": this.roomname, "n": this.nid};
+        this.$.ajaxpost.params.go();
+        this.socket.emit("newroom", this.nid);
+        document.location.href = "rooms/" + this.nid;
       }
       
     });

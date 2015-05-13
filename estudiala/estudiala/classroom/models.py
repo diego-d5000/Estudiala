@@ -1,3 +1,18 @@
 from django.db import models
 
-# Create your models here.
+class Room(models.Model):
+	name = models.CharField(max_length=128)
+	n = models.CharField(max_length=16)
+
+	def __unicode__(self):
+		return self.name
+
+class Chat(models.Model):
+	username = models.CharField(max_length=64)
+	role = models.CharField(max_length=15)
+	text = models.CharField(max_length=280)
+	date = models.CharField(max_length=35)
+	room = models.ForeignKey(Room)
+
+	def __unicode__(self):
+		return self.username
