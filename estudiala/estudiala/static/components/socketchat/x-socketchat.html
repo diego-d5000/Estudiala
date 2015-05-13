@@ -1,23 +1,25 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-shadow/paper-shadow.html">
 <link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-input/paper-input-decorator.html">
+<link rel="import" href="../paper-input/paper-char-counter.html">
 <link rel="import" href="../core-icons/core-icons.html">
 <link rel="import" href="../font-roboto/roboto.html">
 <link rel="import" href="../paper-fab/paper-fab.html">
 <link rel="import" href="../core-list/core-list.html">
 <link rel="import" href="../core-item/core-item.html">
+<link rel="import" href="../core-ajax/core-ajax.html">
 
-<polymer-element name="x-socketchat" attributes="namespace lheight user role">
+<polymer-element name="x-socketchat" attributes="namespace lheight user role csrftoken roomid">
   <template>
-    <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
     <link rel="stylesheet" href="x-socketchat.css">
     <paper-shadow z="1" class="card">
       <core-list data="{{data}}" style="height: {{lheight}}">
         <template>
           <core-item icon="account-circle" class="message {{ {moderator: model.role == 'moderador' || model.role == 'profesor'} | tokenList}}">
             <div flex>
-               <div class="muser">{{model.user}}</div>
-              <div class="mtxt">{{model.txt}}</div>
+               <div class="muser">{{model.username}}</div>
+              <div class="mtxt">{{model.text}}</div>
               <div class="mdate">{{model.date}}</div>
             </div>
           </core-item>
@@ -27,7 +29,19 @@
       <paper-fab mini type="submit" icon="send" title="send" on-click={{sendMsg}}></paper-fab>
     </paper-shadow>
 
+    <core-ajax id ="ajaxget"
+    url="http://localhost:8000/classroom/chat"
+    params='{"n":"devroom"}'
+    method="get"
+    handleAs="json"
+    on-core-response="{{fillChat}}"></core-ajax>
+
+   <core-ajax id="ajaxpost"
+    url="http://localhost:8000/classroom/chat/"
+    method="post"></core-ajax>
+
   </template>
+  <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
   <script>
     Polymer('x-socketchat', {
 
@@ -37,26 +51,32 @@
       
       user: '',
       
-      role: '',
+      role: 'estudiante',
+
+      csrftoken: '',
+
+      roomid: '',
       
       data: [],
 
+      fillChat: function(e, res){
+        this.data = res.response
+      } ,
+
       ready: function() {
         this.socket = io(this.namespace);
-        this.data;
+        this.$.ajaxget.go()
         this.socket.on('chat message', function(msg){
          document.querySelector('x-socketchat').data.push(msg);
+         msg.csrfmiddlewaretoken = document.querySelector('x-socketchat').csrftoken;
+         msg.room = document.querySelector('x-socketchat').roomid;
+         document.querySelector('x-socketchat').$.ajaxpost.params = msg;
+         document.querySelector('x-socketchat').$.ajaxpost.go();
         });
-      },
-
-      attrChanged: function() {
-      },
-
-      task: function(dummy) {
       },
       
       sendMsg: function() {
-        this.socket.emit('chat message', {txt: this.$.msgTxt.value, user: this.user, role: this.role});
+        this.socket.emit('chat message', {username: this.user, role: this.role, text: this.$.msgTxt.value});
         this.$.msgTxt.value = "";
       }
       
