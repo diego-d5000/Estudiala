@@ -20,7 +20,7 @@ from classroom import urls as cl_urls
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'usuarios.views.home', name='home'),
-    url(r'^math/$','usuarios.views.math_course', name='math'),
+    url(r'^cursos/math/$','usuarios.views.math_course', name='math'),
     url(r'^programming/$','usuarios.views.programming_course', name='programming'),
     url(r'^kitchen/$','usuarios.views.kitchen_course', name='kitchen'),
     url(r'^profile/$','usuarios.views.user_profile', name='profile'),
