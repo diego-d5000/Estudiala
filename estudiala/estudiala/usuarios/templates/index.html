@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    {% load staticfiles %}
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,6 +19,8 @@
     <link href="http://materializecss.com/css/prism.css" rel="stylesheet">
     <link href="http://materializecss.com/css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+
+    <link rel="import" href="{% static 'components/nuevasala-fab/nuevasala-fab.html' %}">
     <script>
       window.liveSettings = {
         api_key: "a0b49b34b93844c38eaee15690d86413",
@@ -30,6 +33,7 @@
     <script src="//cdn.transifex.com/live.js"></script>
   </head>
   <body>
+    <nuevasala-fab style="position:absolute; right: 2em; top:2em" ct="{{csrf_token}}"><nuevasala-fab>
     <header>
       <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav waves-effect waves-light circle"><i class="mdi-navigation-menu"></i></a></div>
       <ul id="nav-mobile" class="side-nav fixed">

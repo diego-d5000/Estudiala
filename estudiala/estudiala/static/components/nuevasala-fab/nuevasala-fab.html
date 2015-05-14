@@ -46,10 +46,6 @@
 
       ready: function() {
         this.socket = io(':3000/');
-        
-        this.urlid = this.$.urlid.value,
-      
-        this.roomname = this.$.roomname.value
       },
       
       fabclick: function() {
@@ -69,13 +65,14 @@
           }
             return ID;
         }
+        this.urlid = this.$.urlid.value;
+        this.roomname = this.$.roomname.value;
 
-        this.nid = YouTubeGetID(this.$.urlid.value)
-
+        this.nid = YouTubeGetID(this.urlid)
         this.$.ajaxpost.params = {"name": this.roomname, "n": this.nid, "csrfmiddlewaretoken": this.ct};
         this.$.ajaxpost.go()
         this.socket.emit("newroom", this.nid);
-        // document.location.href = "rooms/" + this.nid;
+        document.location.href = "rooms/" + this.nid;
       }
       
     });
