@@ -8,8 +8,9 @@
 <link rel="import" href="../core-tooltip/core-tooltip.html">
 <link rel="import" href="../paper-dialog/paper-action-dialog.html">
 <link rel="import" href="../google-hangout-button/google-hangout-button.html">
+<link rel="import" href="../core-ajax/core-ajax.html">
 
-<polymer-element name="nuevasala-fab" attributes="">
+<polymer-element name="nuevasala-fab" attributes="ct">
   <template>
     <script src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" href="nuevasala-fab.css">
@@ -37,16 +38,14 @@
     method="post"></core-ajax>
 
   </template>
-
+<script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
   <script>
     Polymer('nuevasala-fab', {
 
+      ct: '',
+
       ready: function() {
-        this.socket = io();
-        
-        this.urlid = this.$.urlid.value,
-      
-        this.roomname = this.$.roomname.value
+        this.socket = io(':3000/');
       },
       
       fabclick: function() {
@@ -66,13 +65,14 @@
           }
             return ID;
         }
+        this.urlid = this.$.urlid.value;
+        this.roomname = this.$.roomname.value;
 
-        this.nid = YouTubeGetID(this.$.urlid.value)
-
-        this.$.ajaxpost.params = {"name": this.roomname, "n": this.nid};
-        this.$.ajaxpost.params.go();
+        this.nid = YouTubeGetID(this.urlid)
+        this.$.ajaxpost.params = {"name": this.roomname, "n": this.nid, "csrfmiddlewaretoken": this.ct};
+        this.$.ajaxpost.go()
         this.socket.emit("newroom", this.nid);
-        document.location.href = "rooms/" + this.nid;
+        document.location.href = "classroom/room/?n=" + this.nid;
       }
       
     });

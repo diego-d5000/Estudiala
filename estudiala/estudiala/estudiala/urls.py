@@ -5,7 +5,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^$', 'usuarios.views.home', name='home'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^classroom/$', include(cl_urls)),
+    url(r'^classroom/', include(cl_urls)),
     url(r'^close/$', 'usuarios.views.close', name='close'),
     url(r'^cursos/kitchen/$','usuarios.views.kitchen_course', name='kitchen'),
     url(r'^cursos/math/$','usuarios.views.math_course', name='math'),

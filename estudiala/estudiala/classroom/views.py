@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import HttpResponse
 from django.views.generic import TemplateView
 from . import forms as mForms
 from models import Chat, Room
@@ -25,20 +25,21 @@ class RoomView(TemplateView):
 		if form.is_valid():
 			form.save()
 			url = "/classroom/room?n="
-			url + req.POST["n"]
-			return redirect(url)
+			url += req.POST["n"]
+			return HttpResponse(status=status.HTTP_201_CREATED)
+		else:
+			return HttpResponse(status=status.HTTP_400_BAD_REQUEST)
 
 class ChatView(APIView):
 	def get(self, req, format=None):
-	 	if req.GET["n"] :
-			nroom = req.GET["n"]
-			chats = Chat.objects.filter(room__n=nroom)
+	 	if req.GET["id"] :
+			idchat = req.GET["id"]
+			chats = Chat.objects.filter(room__id=idchat)
 			serializer = ChatSerializer(chats, many=True)
 			return Response(serializer.data)
 
 
 	def post(self, req, format=None):
-		print (req.POST)
 		serializer = ChatSerializer(data=req.data)
 		if serializer.is_valid():
 	  		serializer.save()
