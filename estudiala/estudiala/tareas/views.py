@@ -23,8 +23,24 @@ def homework(request):
 				mail = EmailMessage(subject,message,settings.EMAIL_HOST_USER, to_list)
 				mail.attach(homework_doc.name, homework_doc.read(), homework_doc.content_type)
 				mail.send()
-				return HttpResponse('succes.html')
+				return redirect('homework_success')
 			except:
-				return HttpResponse('error.html')
+				return redirect('homework_error')
 
 	return render(request, 'homework.html', {'form': form})
+
+@login_required(login_url='signin')
+def homework_success(request):
+	return render(
+		request,
+		'homework_success.html',
+		{}
+	)
+
+@login_required(login_url='signin')
+def homework_error(request):
+	return render(
+		request,
+		'homework_error.html',
+		{}
+	)

@@ -16,4 +16,6 @@ urlpatterns = [
     url(r'^profile/$','usuarios.views.user_profile', name='profile'),
     url(r'^programming/$','usuarios.views.programming_course', name='programming'),
     url(r'^signin/$', 'usuarios.views.signin', name='signin'),
-    url(r'^signup/$', 'usuarios.views.signup', name='signup')]
+    url(r'^signup/$', 'usuarios.views.signup', name='signup'),
+    url(r'^homework/success/$','tareas.views.homework_success',name='homework_success'),
+    url(r'^homework/error/$','tareas.views.homework_error', name='homework_error'),]

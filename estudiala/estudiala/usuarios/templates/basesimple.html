@@ -54,6 +54,7 @@
           </ul>
         </li>
         <li class="bold"><a href="{% url 'profile' %}" class="waves-effect waves-teal">Tu perfil</a></li>
+        <li class="bold"><a href="{% url 'homework' %}">Manda tu tarea</a></li>
       </ul>
     </header>
 
@@ -64,14 +65,10 @@
 	-->
 
     <main>
-      
-
-      <div class="container">
 
           {% block content %}
           {% endblock %}
-      </div>    
-
+  
     </main>
 
     <footer class="page-footer">
