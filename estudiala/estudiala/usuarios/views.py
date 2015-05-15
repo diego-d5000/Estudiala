@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect, render_to_response
-#from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import Usuario
@@ -30,7 +29,17 @@ def signin(request):
 			if access is not None:
 				if access.is_active:
 					login(request,access)
-					return redirect('information')
+					user = request.user
+					try:
+						user_object = Usuario.objects.get(user=user.id)
+						descript = user_object.description
+					except:
+						user_object=None
+						descript = user_object
+					if descript is None:
+						return redirect('information')
+					else:
+						return redirect('home')
 				else:
 					return redirect('noactive.html')
 			else:

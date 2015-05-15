@@ -27,7 +27,7 @@
         autocollect: true
       };
     </script>
-    <script src="//cdn.transifex.com/live.js"></script>
+    
   </head>
   <body>
     <header>
@@ -42,9 +42,9 @@
             <li class="bold"><a class="collapsible-header  waves-effect waves-teal">Cursos</a>
               <div class="collapsible-body">
                 <ul>
-                  <li><a href="cursos/matematicas.html">Matemáticas</a></li>
-                  <li><a href="http://materializecss.com/grid.html">Programación</a></li>
-                  <li><a href="http://materializecss.com/helpers.html">Ingeniería</a></li>
+                  <li><a href="{% url 'math' %}">Matemáticas</a></li>
+                  <li><a href="{% url 'programming' %}">Programación</a></li>
+                  <li><a href="{% url 'kitchen' %}">Cocina</a></li>
                 </ul>
               </div>
             </li>
@@ -85,7 +85,7 @@
               <a href="" class="sha"></a>
               &nbsp;&nbsp;
               <span class="date"></span>
-              <a id="github-button" href="https://github.com/diego-d5000/Estudiala/commits/master" class="btn-flat right grey-text text-lighten-5 waves-effect waves-light hide-on-small-only">Github</a>
+              <a id="github-button" href="https://github.com/diego-d5000/Estudiala/commits/develop" class="btn-flat right grey-text text-lighten-5 waves-effect waves-light hide-on-small-only">Github</a>
             </div>
           </div>
         </div>
