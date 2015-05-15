@@ -31,7 +31,7 @@
 
     <core-ajax id ="ajaxget"
     url="http://localhost:8000/classroom/chat"
-    params='{"n":"devroom"}'
+    params='{"id":{{roomid}}}'
     method="get"
     handleAs="json"
     on-core-response="{{fillChat}}"></core-ajax>
@@ -68,15 +68,13 @@
         this.$.ajaxget.go()
         this.socket.on('chat message', function(msg){
          document.querySelector('x-socketchat').data.push(msg);
-         msg.csrfmiddlewaretoken = document.querySelector('x-socketchat').csrftoken;
-         msg.room = document.querySelector('x-socketchat').roomid;
-         document.querySelector('x-socketchat').$.ajaxpost.params = msg;
-         document.querySelector('x-socketchat').$.ajaxpost.go();
         });
       },
       
       sendMsg: function() {
         this.socket.emit('chat message', {username: this.user, role: this.role, text: this.$.msgTxt.value});
+         this.$.ajaxpost.params = {username: this.user, role: this.role, text: this.$.msgTxt.value, date: 'hoy', csrfmiddlewaretoken: this.csrftoken, room:this.roomid};
+         this.$.ajaxpost.go();
         this.$.msgTxt.value = "";
       }
       

@@ -14,7 +14,7 @@ var io = require( "socket.io" )( server );
 
 var sala1 = io.of('/devroom');
 sala1.on('connection', function(socket){
-  console.log("new socket connected")
+  console.log("new socket connected in devroom")
   socket.on('chat message', function(msg){
     msg.date = new Date();
     sala1.emit('chat message', msg);
@@ -23,20 +23,21 @@ sala1.on('connection', function(socket){
 });
 
 io.on("connection", function(socket){
-
   console.log("nueva conexion en socket general")
 
   socket.on('newroom', function(msg){
     console.log("nueva sala: " + msg)
-  io.of("/" + msg).on('connection', function(socket){
-    console.log("nueva conexion en una nueva sala")
+    io.of("/" + msg).on('connection', function(socket){
+      console.log("nueva conexion en nueva sala");
+      socket.on('chat message', function(msg){
+        msg.date = new Date();
+        io.of(this.nsp.name).emit('chat message', msg);
+      })
+    })
   })
-})
 
   socket.on('closeroom', function(msg){
-    console.log(io.nsps)
-  delete io.nsps['/' + msg];
-  console.log("sala borrada")
-  console.log(io.nsps)
-})
+    delete io.nsps['/' + msg];
+    console.log("sala borrada: + msg")
+  })
 })

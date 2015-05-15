@@ -32,9 +32,9 @@ class RoomView(TemplateView):
 
 class ChatView(APIView):
 	def get(self, req, format=None):
-	 	if req.GET["n"] :
-			nroom = req.GET["n"]
-			chats = Chat.objects.filter(room__n=nroom)
+	 	if req.GET["id"] :
+			idchat = req.GET["id"]
+			chats = Chat.objects.filter(room__id=idchat)
 			serializer = ChatSerializer(chats, many=True)
 			return Response(serializer.data)
 
