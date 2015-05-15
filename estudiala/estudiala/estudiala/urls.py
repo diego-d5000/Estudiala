@@ -29,5 +29,5 @@ urlpatterns = [
     url(r'^close/$', 'usuarios.views.close', name='close'),
     url(r'^information/$','usuarios.views.information', name='information'),
     url(r'^homework/$','tareas.views.homework', name='homework'),
-    url(r'^classroom/$', include(cl_urls)),
+    url(r'^classroom/', include(cl_urls)),
 ]
