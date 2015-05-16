@@ -6,7 +6,7 @@
 <link rel="import" href="../font-roboto/roboto.html">
 <link rel="import" href="../paper-fab/paper-fab.html">
 <link rel="import" href="../core-tooltip/core-tooltip.html">
-<link rel="import" href="../paper-dialog/paper-action-dialog.html">
+<link rel="import" href="../paper-dialog/paper-dialog.html">
 <link rel="import" href="../google-hangout-button/google-hangout-button.html">
 <link rel="import" href="../core-ajax/core-ajax.html">
 
@@ -17,7 +17,7 @@
 
     <paper-fab icon="account-balance" title="nuevasala" on-click={{fabclick}}></paper-fab>
     
-    <paper-action-dialog id="dialog" backdrop autoCloseDisabled layered="false">
+    <paper-dialog id="dialog" autoCloseDisabled layered="false">
       <core-tooltip label="1. Dale nombre a la sala" position="top" class="dialogcont" show>
       <paper-input id="roomname" label="Nombre de la Sala" floatingLabel></paper-input>
       </core-tooltip>
@@ -28,10 +28,10 @@
       
       <core-tooltip label="3. Coloca el ID de tu Hangout" position="top" class="dialogcont" show>
       <paper-input id="urlid" label="URL de Hangout" floatingLabel></paper-input>
-      </core-tooltip>position="top" 
+      </core-tooltip> <br>
     
       <paper-button on-click="{{newroom}}" affirmative autofocus>Crear</paper-button>
-    </paper-action-dialog>
+    </paper-dialog>
 
     <core-ajax id="ajaxpost"
     url="http://localhost:8000/classroom/room/"

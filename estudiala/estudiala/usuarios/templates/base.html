@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    {% load staticfiles%}
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,6 +19,7 @@
     <link href="http://materializecss.com/css/prism.css" rel="stylesheet">
     <link href="http://materializecss.com/css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+    <link rel="import" href="{% static 'components/nuevasala-fab/nuevasala-fab.html' %}">
     <script>
       window.liveSettings = {
         api_key: "a0b49b34b93844c38eaee15690d86413",
@@ -27,6 +29,15 @@
         autocollect: true
       };
     </script>
+    <style type="text/css">
+    nuevasala-fab{
+      margin-right:2em;
+      position: absolute !important;
+      top: 30px;
+      right: 1em;
+      z-index: 99999;
+}
+    </style>
     
   </head>
   <body>
@@ -54,8 +65,9 @@
           </ul>
         </li>
         <li class="bold"><a href="{% url 'profile' %}" class="waves-effect waves-teal">Tu perfil</a></li>
-        <li class="bold"><a href="{% url 'homework' %}">Manda tu tarea</a></li>
+        <li class="bold"><a href="{% url 'homework' %}">Manda tu tarea</a></li>9
       </ul>
+      <nuevasala-fab><nuevasala-fab>
     </header>
 
 	<!--
@@ -91,7 +103,6 @@
           </div>
         </div>
       </div>
-
       <div class="container">
 
           {% block content %}
