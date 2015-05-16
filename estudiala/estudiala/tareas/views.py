@@ -1,17 +1,25 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.http import HttpResponse
-from django.core.mail import send_mail, EmailMessage
+from django.core.mail import EmailMessage
 from django.conf import settings
 from .forms import NewEmail
+from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
-@login_required(login_url='signin')
-def homework(request):
-	user = request.user
-	email = user.email
-	form = NewEmail(request.POST, request.FILES)
-	if request.method == 'POST':
+class homework(View):
+	template_name = 'homework.html'
+
+	@method_decorator(login_required)
+	def get(self,request):
+		form = NewEmail()
+		return render(request,self.template_name,locals())
+
+	@method_decorator(login_required)
+	def post(self,request):
+		form = NewEmail(request.POST, request.FILES)
+		user = request.user
+		email = user.email
 		if form.is_valid():
 			subject = "Tarea de: " + request.POST['subject']
 			message = request.POST['message']
@@ -26,8 +34,8 @@ def homework(request):
 				return redirect('homework_success')
 			except:
 				return redirect('homework_error')
-
-	return render(request, 'homework.html', {'form': form})
+		else:
+			return render(request, self.template_name, locals())
 
 @login_required(login_url='signin')
 def homework_success(request):

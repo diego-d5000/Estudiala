@@ -1,62 +1,88 @@
-from django.shortcuts import render, redirect, render_to_response
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import Usuario
 from django.views.generic import View
-from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .forms import NewUserCreationForm, UserInformationForm
+from django.utils.decorators import method_decorator
 
-def signup(request):
-	form = NewUserCreationForm(request.POST or None)
-
-	if form.is_valid():
-		form.save()
-		return redirect('information')
-
+class signup(View):
 	#loguear al usuario directamente
 	#redireccionar a information
+	template_name = 'signup.html'
 
-	return render(request,'signup.html', {'form' : form})
+	def get(self,request):
+		form = NewUserCreationForm()
+		return render(request, self.template_name, locals())
 
-def signin(request):
-	if request.method =='POST':
+	def post(self,request):
+		form = NewUserCreationForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('information')
+		else:
+			return render(request, self.template_name, locals())
+
+class signin(View):
+	template_name='signin.html'
+
+	def get(self,request):
+		form = AuthenticationForm()
+		return render(request, self.template_name, locals())
+
+	def post(self, request):
 		form = AuthenticationForm(request.POST)
 		if form.is_valid:
 			username = request.POST['username']
 			password = request.POST['password']
 			access = authenticate(username=username, password=password)
-			if access is not None:
-				if access.is_active:
-					login(request,access)
-					user = request.user
-					try:
-						user_object = Usuario.objects.get(user=user.id)
-						descript = user_object.description
-					except:
-						user_object=None
-						descript = user_object
-					if descript is None:
-						return redirect('information')
-					else:
-						return redirect('home')
+			if access is not None and access.is_active:
+				login(request,access)
+				user = request.user
+				try:
+					user_object = Usuario.objects.get(user=user.id)
+					descript = user_object.description
+				except:
+					user_object=None
+					descript = user_object
+				if descript is None:
+					return redirect('information')
 				else:
-					return redirect('noactive.html')
+					return redirect('home')
 			else:
 				return redirect('nouser.html')
-	else:
-		form = AuthenticationForm()
-	return render(request,'signin.html',{'form':form})
+		else:
+			return render(request, self.template_name, locals())
 
-@login_required(login_url='signin')
-def information(request):
-	form = UserInformationForm(request.POST or None)
-	user = request.user
+#@login_required(login_url='signin')
+class information(View):
+	template_name = 'info.html'
 
-	if form.is_valid():
-		form.save(user=request.user)
+	@method_decorator(login_required)
+	def get(self,request):
+		form = UserInformationForm()
+		return render(request, self.template_name, locals())
 
-	return render(request,'info.html', {'form' : form})
+	@method_decorator(login_required)
+	def post(self,request):
+		form = UserInformationForm(request.POST)
+		user = request.user
+		if form.is_valid():
+			form.save(user = user)
+			return redirect('home')
+		else:
+			return render(request, self.template_name, locals())
+
+#@login_required(login_url='signin')
+#def information(request):
+#	form = UserInformationForm(request.POST or None)
+#	user = request.user
+
+#	if form.is_valid():
+#		form.save(user=request.user)
+
+#	return render(request,'info.html', {'form' : form})
 
 @login_required(login_url='signin')
 def close(request):
@@ -98,4 +124,3 @@ def user_profile(request):
 		'perfil.html',
 		{}
 	)
-
