@@ -7,7 +7,8 @@ from tareas import views as tareas_views
 urlpatterns = [
     url(r'^$', 'usuarios.views.home', name='home'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^classroom/$', include(cl_urls)),
+    # No le pongan el puto signo de pesos a esta url (classroom) >;SSSS
+    url(r'^classroom/', include(cl_urls)),
     url(r'^cursos/kitchen/$','usuarios.views.kitchen_course', name='kitchen'),
     url(r'^cursos/math/$','usuarios.views.math_course', name='math'),
     url(r'^cursos/programming/$','usuarios.views.programming_course', name='programming'),
