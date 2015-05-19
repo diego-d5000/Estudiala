@@ -118,9 +118,19 @@ def kitchen_course(request):
 	)
 
 @login_required(login_url='signin')
+
 def user_profile(request):
 	return render(
 		request,
 		'perfil.html',
 		{}
 	)
+
+def user_login(request):
+	return render(
+		request,
+		'signin.html',
+		{}
+	)
+
+
