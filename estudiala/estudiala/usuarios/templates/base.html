@@ -45,7 +45,7 @@
       <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav waves-effect waves-light circle"><i class="mdi-navigation-menu"></i></a></div>
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo"><a id="logo-container" class="brand-logo" href="{% url 'home' %}">
-            <object id="front-page-logo" type="image/svg+xml" data="http://imgh.us/logo_68.svg"></object></a></li>
+            <object id="front-page-logo" type="image/svg+xml" data="http://k30.kn3.net/B89D9B087.png"></object></a></li>
         <li class="bold"><a href="{% url 'home' %}" class="waves-effect waves-teal">Inicio</a></li>
         
         <li class="no-padding">
@@ -64,20 +64,14 @@
             </li>
           </ul>
         </li>
-        {% 
-            open = request.session['open'] 
-            if open == true:             
-        %}
+        {% if user.is_authenticated %}
         <li class="bold"><a href="{% url 'profile' %}" class="waves-effect waves-teal">Tu perfil</a></li>
         <li class="bold"><a href="{% url 'homework' %}">Manda tu tarea</a></li>
-        {% 
-          else
-        %}
-        <li class="bold"><a href="{% url 'profile' %}" class="waves-effect waves-teal">Tu perfil</a></li>
-        <li class="bold"><a href="{% url 'homework' %}">Manda tu tarea</a></li>
-        {%%}
-      </ul>
-      <nuevasala-fab><nuevasala-fab>
+        <nuevasala-fab><nuevasala-fab>
+        {% else %}
+        <li class="bold"><a href="{% url 'signin' %}" class="waves-effect waves-teal">Incia Sesion</a></li>
+        <li class="bold"><a href="{% url 'signup' %}">Registrate</a></li>      </ul>
+        {% endif %}
     </header>
 
 	<!--
