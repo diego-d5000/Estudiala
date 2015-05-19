@@ -1,2 +1,2 @@
-# Estudiala
-Estudiala is a platform for courses and distance education. As a platform, Estudiala can be used for universities to offer online careers, or for passionate teachers for offer his knowledge // Estudiala es una plataforma para cursos y educación a distancia, como plataforma Estudiala puede ser usada por universidades para ofrecer cursos o por profesores apasionados para dar su conocimiento
+﻿# Estudiala
+Estudiala is a platform for courses and distance education. As a platform, Estudiala can be used for universities to offer online careers, or for passionate teachers for offer his knowledge // Estudiala es una plataforma para cursos y educación a distancia, como plataforma Estudiala puede ser usada por universidades para ofrecer cursos o por profesores apasionados para dar su conocimiento.
