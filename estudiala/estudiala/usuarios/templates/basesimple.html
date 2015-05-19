@@ -53,8 +53,13 @@
             </li>
           </ul>
         </li>
+        {% if user.is_authenticated %}
         <li class="bold"><a href="{% url 'profile' %}" class="waves-effect waves-teal">Tu perfil</a></li>
         <li class="bold"><a href="{% url 'homework' %}">Manda tu tarea</a></li>
+        {% else %}
+        <li class="bold"><a href="{% url 'signin' %}" class="waves-effect waves-teal">Incia Sesion</a></li>
+        <li class="bold"><a href="{% url 'signup' %}">Registrate</a></li>      </ul>
+        {% endif %}
       </ul>
     </header>
 
