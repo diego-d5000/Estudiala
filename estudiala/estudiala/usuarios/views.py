@@ -74,16 +74,6 @@ class information(View):
 		else:
 			return render(request, self.template_name, locals())
 
-#@login_required(login_url='signin')
-#def information(request):
-#	form = UserInformationForm(request.POST or None)
-#	user = request.user
-
-#	if form.is_valid():
-#		form.save(user=request.user)
-
-#	return render(request,'info.html', {'form' : form})
-
 @login_required(login_url='signin')
 def close(request):
 	logout(request)
@@ -118,19 +108,9 @@ def kitchen_course(request):
 	)
 
 @login_required(login_url='signin')
-
 def user_profile(request):
 	return render(
 		request,
 		'perfil.html',
 		{}
 	)
-
-def user_login(request):
-	return render(
-		request,
-		'signin.html',
-		{}
-	)
-
-
