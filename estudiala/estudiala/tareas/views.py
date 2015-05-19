@@ -21,6 +21,7 @@ class homework(View):
 		user = request.user
 		email = user.email
 		if form.is_valid():
+			form.save(user=user)
 			subject = "Tarea de: " + request.POST['subject']
 			name = request.POST['name']
 			user_email = email
