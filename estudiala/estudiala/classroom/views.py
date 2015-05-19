@@ -24,8 +24,6 @@ class RoomView(TemplateView):
 		form = mForms.RoomForm(req.POST)
 		if form.is_valid():
 			form.save()
-			url = "/classroom/room?n="
-			url += req.POST["n"]
 			return HttpResponse(status=status.HTTP_201_CREATED)
 		else:
 			return HttpResponse(status=status.HTTP_400_BAD_REQUEST)

@@ -72,7 +72,7 @@
         this.$.ajaxpost.params = {"name": this.roomname, "n": this.nid, "csrfmiddlewaretoken": this.ct};
         this.$.ajaxpost.go()
         this.socket.emit("newroom", this.nid);
-        document.location.href = "classroom/room/?n=" + this.nid;
+        document.location.href = "/classroom/room/?n=" + this.nid;
       }
       
     });
