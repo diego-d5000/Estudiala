@@ -22,13 +22,13 @@ class homework(View):
 		email = user.email
 		if form.is_valid():
 			subject = "Tarea de: " + request.POST['subject']
-			message = request.POST['message']
+			name = request.POST['name']
 			user_email = email
 			to_email = request.POST['to_email']
 			to_list = [to_email, user_email]
 			homework_doc = request.FILES['homework_doc']
 			try:
-				mail = EmailMessage(subject,message,settings.EMAIL_HOST_USER, to_list)
+				mail = EmailMessage(subject,name,settings.EMAIL_HOST_USER, to_list)
 				mail.attach(homework_doc.name, homework_doc.read(), homework_doc.content_type)
 				mail.send()
 				return redirect('homework_success')

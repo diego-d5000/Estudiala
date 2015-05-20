@@ -91,16 +91,6 @@ class information(View):
 		else:
 			return render(request, self.template_name, locals())
 
-#@login_required(login_url='signin')
-#def information(request):
-#	form = UserInformationForm(request.POST or None)
-#	user = request.user
-
-#	if form.is_valid():
-#		form.save(user=request.user)
-
-#	return render(request,'info.html', {'form' : form})
-
 @login_required(login_url='signin')
 def close(request):
 	logout(request)
