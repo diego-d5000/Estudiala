@@ -16,11 +16,28 @@ class signup(View):
 		form = NewUserCreationForm()
 		return render(request, self.template_name, locals())
 
-	def post(self,request):
+	def post(self, request):
 		form = NewUserCreationForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return redirect('information')
+			username = request.POST['username']
+			password = request.POST['password1']
+			access = authenticate(username=username, password=password)
+			if access is not None and access.is_active:
+				login(request,access)
+				user = request.user
+				try:
+					user_object = Usuario.objects.get(user=user.id)
+					descript = user_object.description
+				except:
+					user_object=None
+					descript = user_object
+				if descript is None:
+					return redirect('information')
+				else:
+					return redirect('home')
+			else:
+				return redirect('nouser')
 		else:
 			return render(request, self.template_name, locals())
 

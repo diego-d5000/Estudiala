@@ -64,9 +64,6 @@
             </li>
           </ul>
         </li>
-        <li class="bold"><a href="{% url 'signin' %}" class="waves-effect waves-teal">Iniciar sesión</a></li>
-        <li class="bold"><a href="{% url 'signup' %}" class="waves-effect waves-teal">Registrarte</a></li>
-
         {% if user.is_authenticated %}
 
         <li class="bold"><a href="{% url 'profile' %}" class="waves-effect waves-teal">Tu perfil</a></li>
