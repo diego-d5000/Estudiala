@@ -1,13 +1,13 @@
 from django import forms
+from .models import Tarea
+from django.contrib.auth.models import User
 
 #Send email (Homework)
-class NewEmail(forms.Form):
-
-	name = forms.CharField(label='Nombre')
-	subject = forms.CharField(label='Materia')
-	to_email = forms.EmailField(label='Correo del Profesor')
-	homework_doc = forms.FileField(label='Archivo de tarea')
+class NewEmail(forms.ModelForm):
+	def save(self,user,*args,**kwargs):
+		self.instance.user=user
+		super(NewEmail,self).save(*args,**kwargs)
 
 	class Meta:
-		
-		fields = ('name', 'subject', 'to_email', 'homework_doc')
+		model = Tarea
+		exclude = ('user','current_date',)

@@ -2,14 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import Usuario
-from django.views.generic import View
+from django.views.generic import View, TemplateView
 from django.contrib.auth.decorators import login_required
 from .forms import NewUserCreationForm, UserInformationForm
-from django.utils.decorators import method_decorator
 
 class signup(View):
-	#loguear al usuario directamente
-	#redireccionar a information
 	template_name = 'signup.html'
 
 	def get(self,request):
@@ -68,20 +65,17 @@ class signin(View):
 				else:
 					return redirect('home')
 			else:
-				return redirect('nouser.html')
+				return redirect('nouser')
 		else:
 			return render(request, self.template_name, locals())
 
-#@login_required(login_url='signin')
 class information(View):
 	template_name = 'info.html'
 
-	@method_decorator(login_required)
 	def get(self,request):
 		form = UserInformationForm()
 		return render(request, self.template_name, locals())
 
-	@method_decorator(login_required)
 	def post(self,request):
 		form = UserInformationForm(request.POST)
 		user = request.user
@@ -91,43 +85,25 @@ class information(View):
 		else:
 			return render(request, self.template_name, locals())
 
+class home(TemplateView):
+	template_name = 'index.html'
+
+class math_course(TemplateView):
+	template_name = 'cursos/matematicas.html'
+
+class programming_course(TemplateView):
+	template_name = 'cursos/programacion.html'
+
+class kitchen_course(TemplateView):
+	template_name = 'cursos/cocina.html'
+
+class user_profile(TemplateView):
+	template_name = 'perfil.html'
+
+class no_user(TemplateView):
+	template_name = 'nouser.html'
+
 @login_required(login_url='signin')
 def close(request):
 	logout(request)
 	return redirect('signin')
-
-def home(request):
-    return render(
-        request,
-        'index.html',
-        {}
-    )
-
-def math_course(request):
-	return render(
-		request,
-		'cursos/matematicas.html',
-		{}
-	)
-
-def programming_course(request):
-	return render(
-		request,
-		'cursos/programacion.html',
-		{}
-	)
-
-def kitchen_course(request):
-	return render(
-		request,
-		'cursos/cocina.html',
-		{}
-	)
-
-@login_required(login_url='signin')
-def user_profile(request):
-	return render(
-		request,
-		'perfil.html',
-		{}
-	)
