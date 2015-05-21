@@ -18,12 +18,12 @@
     <nav class="navbar">
       <img src="/static/images/logo.svg" class="navbar-icon">
       {% if user.is_authenticated %}
-        <input type="button" class="ghost-button-white" value="Mi Perfil" onclick="window.open('/profile','_self')">
-        <input type="button" class="ghost-button-white" value="Mis Tareas" onclick="window.open('/homework/','_self')">
+        <input type="button" class="ghost-button-white" value="Mi Perfil" onclick="window.open('/usuarios/profile','_self')">
+        <input type="button" class="ghost-button-white" value="Mis Tareas" onclick="window.open('/tareas/homework/','_self')">
         <input type="button" class="ghost-button-white" value="Cerrar Sesión" onclick="window.open('/usuarios/close','_self')">
       {% else %}
-        <input type="button" class="ghost-button-white" value="Iniciar Sesión" onclick="window.open('/signin','_self')">
-        <input type="button" class="ghost-button-white" value="Registrate" onclick="window.open('/signup','_self')">
+        <input type="button" class="ghost-button-white" value="Iniciar Sesión" onclick="window.open('/usuarios/signin','_self')">
+        <input type="button" class="ghost-button-white" value="Registrate" onclick="window.open('/usuarios/signup','_self')">
       {% endif %}
     </nav>
     <h1>Estudia.la</h1>
