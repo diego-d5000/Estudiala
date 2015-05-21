@@ -110,16 +110,21 @@ p {
 	margin-right: auto;
 }
 
-table {
+footer {
 	padding: 8px;
 	width: 80%;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	height: 16em;
 }
 
-td {
+.footerSection {
+	float: left;
+	height: 14em;
 	padding: 8px;
+	margin-left: 8px;
+	width: calc(80% / 3px);
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
 	background: rgba(59,101,61, 1);
 	background:-moz-linear-gradient(left, rgba(59,101,61, 1), rgba(59,101,61, 1));
@@ -130,6 +135,6 @@ td {
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff9191', endColorstr='#914a4a',GradientType=1);
 }
 
-.tableDesc {
+.divDesc {
 	text-align: left;
 }
