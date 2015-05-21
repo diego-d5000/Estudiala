@@ -1,43 +1,67 @@
-{% extends 'base.html' %}
-{% block content %}
-          <!--   Promo Section   -->
-          <div class="row">
-            <div class="col s12 m4">
-              <div class="center promo">
-                <i class="mdi-image-flash-on"></i>
-                <p class="promo-caption">Ágil</p>
-                <p class="light center">Aprende a tu ritmo, con los mejores maestros, enseñando los temas de último momento</p>
-              </div>
-            </div>
-
-            <div class="col s12 m4">
-              <div class="center promo">
-                <i class="mdi-social-group"></i>
-                <p class="promo-caption">Comunidad</p>
-                <p class="light center">Comparte tus aprendizajes, pregunta, ve tu progreso y compara</p>
-              </div>
-            </div>
-
-            <div class="col s12 m4">
-              <div class="center promo">
-                <i class="mdi-action-settings"></i>
-                <p class="promo-caption">Fácil para trabajar</p>
-                <p class="light center">Con sistemas altamente optimizados y los mejores recursos para ti</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div class="divider"></div>
-        <div class="section">
-          <div class="row center">
-            <h3 class="light header">Inicia ya</h3>
-            <p class="col s8 offset-s2 caption">Accede a demos para darte una idea de cómo son nuestros cursos</p>
-            <a href="{% url 'math' %}" class="btn-large waves-effect waves-light">Cursos de Matemáticas</a>
-            <a href="{% url 'programming' %}" class="btn-large waves-effect waves-light">Cursos de Programación</a>
-            <a href="{% url 'kitchen' %}" class="btn-large waves-effect waves-light">Cursos de Cocina</a>
-          </div>
-
-        </div>
-      </div>
-    {% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic' rel='stylesheet' type='text/css'>
+  <title>Estudia.la | El Mejor lugar para estudiar en línea</title>
+</head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+<script src="github.commits.widget-min.js"></script>
+<script>
+    $(function () {
+        $('#github-commits').githubInfoWidget(
+      { user: 'alexanderbeletsky', repo: 'github.commits.widget', branch: 'master', last: 5 });
+    });
+</script>
+<body>
+  <nav class="navbar">
+    <img src="/static/images/logo.svg" class="navbar-icon">
+    <input type="button" class="ghost-button-white" value="Cursos" onclick="alert('Manda a la URL webon')">
+    {% if user.is_authenticated %}
+      <input type="button" class="ghost-button-white" value="Mi Perfil" onclick="alert('Manda a la URL webon')">
+      <input type="button" class="ghost-button-white" value="Mis Tareas" onclick="alert('Manda a la URL webon')">
+    {% else %}
+      <input type="button" class="ghost-button-white" value="Iniciar Sesión" onclick="alert('Manda a la URL webon')">
+      <input type="button" class="ghost-button-white" value="Registrate" onclick="alert('Manda a la URL webon')">
+    {% endif %}
+  </nav>
+  <h1>Estudia.la</h1>
+  <h2>Un recurso para aprender en línea, con una página bella</h2>
+  <p>
+    <img src="/static/images/github.svg" class="icon"><br>
+    <iframe class="githubFrame" src="http://tylerlh.github.com/github-latest-commits-widget/?username=diego-d5000&repo=Estudiala&limit=6&branch=develop"
+  allowtransparency="true" frameborder="0" scrolling="no" width="502px" height="252px"></iframe>
+  </p>
+  <footer>
+    <table>
+      <tr>
+        <td>
+          <p>
+            Ayuda a Estudia.la a continuar
+          </p>
+          <p class="tableDesc">
+            Somos un equipo de estudiantes sin dinero, si nos donas prometemos seguir desarrollando y gastarnos todo en alcohol.
+          </p>
+          <input type="button" class="ghost-button-white" value="Donar" onclick="alert('Dona dinero pequeño hijo de puta')">
+        </td>
+        <td>
+          <p>
+            Mándanos tus comentarios
+          </p>
+          <p class="tableDesc">
+            Si tienes alguna duda, aclaración, queja o lo que sea, guárdatela, nosotros solo aceptamos comentarios.
+          </p>
+          <input type="button" class="ghost-button-white" value="Chat" onclick="alert('Toma tu chat .|.')">
+        </td>
+        <td>
+          <p>
+            Nuestras Redes Sociales
+          </p>
+            <img src="/static/images/facebook.svg" class="icon"><img src="/static/images/twitter.svg" class="icon">
+        </td>
+      </tr>
+    </table>
+  </footer>
+</body>
+</html>
