@@ -17,13 +17,13 @@
   <body>
     <nav class="navbar">
       <img src="/static/images/logo.svg" class="navbar-icon">
-      <input type="button" class="ghost-button-white" value="Cursos" onclick="alert('Manda a la URL webon')">
       {% if user.is_authenticated %}
-        <input type="button" class="ghost-button-white" value="Mi Perfil" onclick="alert('Manda a la URL webon')">
-        <input type="button" class="ghost-button-white" value="Mis Tareas" onclick="alert('Manda a la URL webon')">
+        <input type="button" class="ghost-button-white" value="Mi Perfil" onclick="window.open('/profile','_self')">
+        <input type="button" class="ghost-button-white" value="Mis Tareas" onclick="window.open('/homework/','_self')">
+        <input type="button" class="ghost-button-white" value="Cerrar Sesión" onclick="window.open('/usuarios/close','_self')">
       {% else %}
-        <input type="button" class="ghost-button-white" value="Iniciar Sesión" onclick="alert('Manda a la URL webon')">
-        <input type="button" class="ghost-button-white" value="Registrate" onclick="alert('Manda a la URL webon')">
+        <input type="button" class="ghost-button-white" value="Iniciar Sesión" onclick="window.open('/signin','_self')">
+        <input type="button" class="ghost-button-white" value="Registrate" onclick="window.open('/signup','_self')">
       {% endif %}
     </nav>
     <h1>Estudia.la</h1>
@@ -64,4 +64,4 @@
       </table>
     </footer>
   </body>
-</html>
+</html>|
