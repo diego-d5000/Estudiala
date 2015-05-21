@@ -41,12 +41,12 @@ class homework_success(TemplateView):
 class homework_error(TemplateView):
 	template_name = 'homework_error.html'
 
-#def get_homework(request):
-#	user = request.user
-#	homeworks = Tarea.objects.filter(user=user)
-#	print homeworks
-#	return render(
-#		request,
-#		'homework.html',
-#		{'homeworks':homeworks}
-#	)
+def get_homework(request):
+	user = request.user
+	homeworks = Tarea.objects.filter(user=user)
+	print homeworks
+	return render(
+		request,
+		'homework1.html',
+		{'homeworks':homeworks}
+	)
