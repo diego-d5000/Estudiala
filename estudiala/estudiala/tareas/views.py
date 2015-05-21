@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.core.mail import EmailMessage
 from django.conf import settings
 from .forms import NewEmail
+from .models import Tarea
 
 class homework(View):
 	template_name = 'homework.html'
@@ -39,3 +40,13 @@ class homework_success(TemplateView):
 
 class homework_error(TemplateView):
 	template_name = 'homework_error.html'
+
+#def get_homework(request):
+#	user = request.user
+#	homeworks = Tarea.objects.filter(user=user)
+#	print homeworks
+#	return render(
+#		request,
+#		'homework.html',
+#		{'homeworks':homeworks}
+#	)

@@ -58,7 +58,9 @@
         <li class="bold"><a href="{% url 'homework' %}">Manda tu tarea</a></li>
         {% else %}
         <li class="bold"><a href="{% url 'signin' %}" class="waves-effect waves-teal">Incia Sesion</a></li>
-        <li class="bold"><a href="{% url 'signup' %}">Registrate</a></li>      </ul>
+        <li class="bold"><a href="{% url 'signup' %}">Registrate</a></li>     
+        <li class="bold"><a href="{% url 'social:begin' 'facebook' %}">Inicia sesión con Facebook</a></li>
+        <li class="bold"><a href="{% url 'social:begin' 'twitter' %}">Inicia sesión con Twitter</a></li> </ul>
         {% endif %}
       </ul>
     </header>
