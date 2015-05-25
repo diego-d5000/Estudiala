@@ -16,7 +16,7 @@
   </script>
   <body>
     <nav class="navbar">
-      <img src="/static/images/logo.svg" class="navbar-icon">
+      <a href="http://localhost:8000" target="_top"><img src="/static/images/logo.svg" class="navbar-icon"></a>
       {% if user.is_authenticated %}
         <input type="button" class="ghost-button-white" value="Mi Perfil" onclick="window.open('/usuarios/profile','_self')">
         <input type="button" class="ghost-button-white" value="Mis Tareas" onclick="window.open('/tareas/homework/','_self')">

@@ -27,7 +27,7 @@
   <body>
       <nuevasala-fav ct="{{csrf_token}}"></nuevasala-fav>
     <nav class="navbar">
-      <inmg src="/static/images/logo.svg" class="navbar-icon">
+      <a href="http://localhost:8000" target="_top"><img src="/static/images/logo.svg" class="navbar-icon"></a>
       {% if user.is_authenticated %}
         <input type="button" class="ghost-button-white" value="Mi Perfil" onclick="window.open('/usuarios/profile','_self')">
         <input type="button" class="ghost-button-white" value="Mis Tareas" onclick="window.open('/tareas/homework/','_self')">
@@ -36,6 +36,8 @@
         <input type="button" class="ghost-button-white" value="Iniciar Sesión" onclick="window.open('/usuarios/signin','_self')">
         <input type="button" class="ghost-button-white" value="Registrate" onclick="window.open('/usuarios/signup','_self')">
       {% endif %}
+      <a href="{% url 'social:begin' 'facebook' %}"><img style="float:left;" src="/static/images/facebook.svg" class="icon"</a>
+          <a href="{% url 'social:begin' 'twitter' %}"><img style="float:left; margin-left: 16px;" src="/static/images/twitter.svg" class="icon"></a>
     </nav>
     <h1>Estudia.la</h1>
     <h2>Un recurso para aprender en línea, con una página bella</h2>
@@ -62,13 +64,6 @@
             Si tienes alguna duda, aclaración, queja o lo que sea, comunicate con nosotros.
           </p>
           <input type="button" class="ghost-button-white" value="Chat">
-        </div>
-        <div class="footerSection">
-          <p>
-            Login
-          </p>
-          <a href="{% url 'social:begin' 'facebook' %}"><img src="/static/images/facebook.svg" class="icon"</a>
-          <a href="{% url 'social:begin' 'twitter' %}"><img src="/static/images/twitter.svg" class="icon"></a>
         </div>
     </footer>
   </body>
