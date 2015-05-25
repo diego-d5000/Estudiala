@@ -30,7 +30,7 @@ html {
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff9191', endColorstr='#914a4a',GradientType=1);
 }
 
-.ghost-button-white {
+.ghost-button-white, input[type='submit'] {
 	float: left;
 	outline: none;
 	color: #F9F9F9;
@@ -45,11 +45,30 @@ html {
 	margin-top: 16px;
 }
 
-.ghost-button-white:hover {
+.ghost-button-white:hover, input[type='submit']:hover  {
 	color: #A9A9A9;
 	border: 2px solid #A9A9A9;
 	text-shadow: 0 2px 5px rgba(3, 3, 3, 0.26);
 	box-shadow: 0 2px 5px rgba(3, 3, 3, 0.26);
+}
+
+input[type='submit'] {
+	width:20%;
+	float: none;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+input[type='text'], input[type='email'], input[type='password'] {
+	width: 80%;
+	color: #FFF;
+	border: none;
+	outline: none;
+	font-size: 1.2em;
+	border-bottom: 1px solid #FFF;
+	background-color: transparent;
+	text-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
 }
 
 .navbar-icon {
@@ -137,4 +156,8 @@ footer {
 
 .divDesc {
 	text-align: left;
+}
+
+span.helptext, label {
+	display: none;
 }

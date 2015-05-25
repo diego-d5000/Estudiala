@@ -12,10 +12,28 @@ class NewUserCreationForm(UserCreationForm):
 	last_name = forms.CharField()
 
 	#validar que el email no exista
-
 	class Meta:
 		model = User
-		fields = ('username','email', 'first_name', 'last_name')
+		fields = ('username','email', 'first_name', 'last_name', 'password')
+		widgets = {
+			'username': forms.TextInput(
+				attrs={'class': 'input_field input_field-social',
+				'placeholder': 'Ingresa tu usuario'}
+			),
+			'email': forms.TextInput(
+				attrs={'class': 'input_field input_field-social',
+				'placeholder': 'Ingresa tu correo'}
+			),
+			'first_name': forms.TextInput(
+				attrs={'class': 'input_field input_field-social',
+				'placeholder': 'Ingresa tu nombre'}
+			),
+			'last_name': forms.TextInput(
+				attrs={'class': 'input_field input_field-social',
+				'placeholder': 'Ingresa tu apellido'}
+			),
+		}
+
 
 #	def clean_email():
 

@@ -1,27 +1,43 @@
-<<<<<<< HEAD
-{% extends 'base.html' %}
-{% block content %}
-=======
 <!DOCTYPE html>
-<html lang="es-mx">
-<head>
-
-	<!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
-
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
-
-	<meta charset="UTF-8">
-	<title>Registrarse</title>
-</head>
-<body>
->>>>>>> 1728ab78257dd9f7f06c9abadc7d0134378959e1
-	<section>
-		<form action="" method="POST">
-			{% csrf_token %}
-			{{form.as_p}}
-			<input type="submit" value="Enviar"></inpu>
-		</form>
-	</section>
-{% endblock %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic' rel='stylesheet' type='text/css'>
+    <title>Estudia.la | El Mejor lugar para estudiar en línea</title>
+  </head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+  <script src="github.commits.widget-min.js"></script>
+  <script>
+      $(function () {
+          $('#github-commits').githubInfoWidget(
+        { user: 'alexanderbeletsky', repo: 'github.commits.widget', branch: 'master', last: 5 });
+      });
+  </script>
+  <body>
+    <nav class="navbar">
+      <img src="/static/images/logo.svg" class="navbar-icon">
+      {% if user.is_authenticated %}
+        <input type="button" class="ghost-button-white" value="Mi Perfil" onclick="window.open('/usuarios/profile','_self')">
+        <input type="button" class="ghost-button-white" value="Mis Tareas" onclick="window.open('/tareas/homework/','_self')">
+        <input type="button" class="ghost-button-white" value="Cerrar Sesión" onclick="window.open('/usuarios/close/','_self')">
+      {% else %}
+        <input type="button" class="ghost-button-white" value="Iniciar Sesión" onclick="window.open('/usuarios/signin/','_self')">
+        <input type="button" class="ghost-button-white" value="Registrate" onclick="window.open('/usuarios/signup/','_self')">
+      {% endif %}
+    </nav>
+    <h1>Inicio se Sesión</h1>
+    <h2>Inicia sesión para acceder a todas las funciones de Estudia.la</h2>
+    <p>
+    	{% block content %}
+			<section>
+				<form action="" method="POST">
+					{% csrf_token %}
+					{{form.as_p}}
+					<input type="submit" value="Enviar"></inpu>
+				</form>
+			</section>
+		{% endblock %}
+	</p>
+  </body>
+</html>
