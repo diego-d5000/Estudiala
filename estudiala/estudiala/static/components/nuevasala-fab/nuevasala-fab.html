@@ -1,0 +1,80 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../core-icons/core-icons.html">
+<link rel="import" href="../font-roboto/roboto.html">
+<link rel="import" href="../paper-fab/paper-fab.html">
+<link rel="import" href="../core-tooltip/core-tooltip.html">
+<link rel="import" href="../paper-dialog/paper-dialog.html">
+<link rel="import" href="../google-hangout-button/google-hangout-button.html">
+<link rel="import" href="../core-ajax/core-ajax.html">
+
+<polymer-element name="nuevasala-fab" attributes="ct">
+  <template>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="nuevasala-fab.css">
+
+    <paper-fab icon="account-balance" title="nuevasala" on-click={{fabclick}}></paper-fab>
+    
+    <paper-dialog id="dialog" autoCloseDisabled layered="false">
+      <core-tooltip label="1. Dale nombre a la sala" position="top" class="dialogcont" show>
+      <paper-input id="roomname" label="Nombre de la Sala" floatingLabel></paper-input>
+      </core-tooltip>
+      
+      <core-tooltip label="2. Inicia el Hangout Onair" position="top" class="dialogcont" show>
+      <google-hangout-button type="onair" width="175" topic="{{roomname}}" id="hangout" ></google-hangout-button>
+      </core-tooltip>
+      
+      <core-tooltip label="3. Coloca el ID de tu Hangout" position="top" class="dialogcont" show>
+      <paper-input id="urlid" label="URL de Hangout" floatingLabel></paper-input>
+      </core-tooltip> <br>
+    
+      <paper-button on-click="{{newroom}}" affirmative autofocus>Crear</paper-button>
+    </paper-dialog>
+
+    <core-ajax id="ajaxpost"
+    url="http://localhost:8000/classroom/room/"
+    method="post"></core-ajax>
+
+  </template>
+<script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+  <script>
+    Polymer('nuevasala-fab', {
+
+      ct: '',
+
+      ready: function() {
+        this.socket = io(':3000/');
+      },
+      
+      fabclick: function() {
+        this.$.dialog.toggle();
+      },
+      
+      newroom: function() {
+        function YouTubeGetID(url){
+          var ID = '';
+          url = url.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+          if(url[2] !== undefined) {
+            ID = url[2].split(/[^0-9a-z_\-]/i);
+            ID = ID[0];
+          }
+          else {
+            ID = url;
+          }
+            return ID;
+        }
+        this.urlid = this.$.urlid.value;
+        this.roomname = this.$.roomname.value;
+
+        this.nid = YouTubeGetID(this.urlid)
+        this.$.ajaxpost.params = {"name": this.roomname, "n": this.nid, "csrfmiddlewaretoken": this.ct};
+        this.$.ajaxpost.go()
+        this.socket.emit("newroom", this.nid);
+        document.location.href = "/classroom/room/?n=" + this.nid;
+      }
+      
+    });
+  </script>
+</polymer-element>

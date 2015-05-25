@@ -1,53 +1,107 @@
-from django.shortcuts import render, redirect, render_to_response
-#from django.core.urlresolvers import reverse
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import Usuario
-from django.views.generic import View
-from django.http import HttpResponse
+from django.views.generic import View, TemplateView
 from django.contrib.auth.decorators import login_required
 from .forms import NewUserCreationForm, UserInformationForm
 
-def signup(request):
-	form = NewUserCreationForm(request.POST or None)
+class signup(View):
+	template_name = 'signup.html'
 
-	if form.is_valid():
-		form.save()
-		return redirect('information')
+	def get(self,request):
+		form = NewUserCreationForm()
+		return render(request, self.template_name, locals())
 
-	#loguear al usuario directamente
-	#redireccionar a information
+	def post(self, request):
+		form = NewUserCreationForm(request.POST)
+		if form.is_valid():
+			form.save()
+			username = request.POST['username']
+			password = request.POST['password1']
+			access = authenticate(username=username, password=password)
+			if access is not None and access.is_active:
+				login(request,access)
+				user = request.user
+				try:
+					user_object = Usuario.objects.get(user=user.id)
+					descript = user_object.description
+				except:
+					user_object=None
+					descript = user_object
+				if descript is None:
+					return redirect('information')
+				else:
+					return redirect('home')
+			else:
+				return redirect('nouser')
+		else:
+			return render(request, self.template_name, locals())
 
-	return render(request,'signup.html', {'form' : form})
+class signin(View):
+	template_name='signin.html'
 
-def signin(request):
-	if request.method =='POST':
+	def get(self,request):
+		form = AuthenticationForm()
+		return render(request, self.template_name, locals())
+
+	def post(self, request):
 		form = AuthenticationForm(request.POST)
 		if form.is_valid:
 			username = request.POST['username']
 			password = request.POST['password']
 			access = authenticate(username=username, password=password)
-			if access is not None:
-				if access.is_active:
-					login(request,access)
+			if access is not None and access.is_active:
+				login(request,access)
+				user = request.user
+				try:
+					user_object = Usuario.objects.get(user=user.id)
+					descript = user_object.description
+				except:
+					user_object=None
+					descript = user_object
+				if descript is None:
 					return redirect('information')
 				else:
-					return redirect('noactive.html')
+					return redirect('home')
 			else:
-				return redirect('nouser.html')
-	else:
-		form = AuthenticationForm()
-	return render(request,'signin.html',{'form':form})
+				return redirect('nouser')
+		else:
+			return render(request, self.template_name, locals())
 
-@login_required(login_url='signin')
-def information(request):
-	form = UserInformationForm(request.POST or None)
-	user = request.user
+class information(View):
+	template_name = 'info.html'
 
-	if form.is_valid():
-		form.save(user=request.user)
+	def get(self,request):
+		form = UserInformationForm()
+		return render(request, self.template_name, locals())
 
-	return render(request,'info.html', {'form' : form})
+	def post(self,request):
+		form = UserInformationForm(request.POST)
+		user = request.user
+		if form.is_valid():
+			form.save(user = user)
+			return redirect('home')
+		else:
+			return render(request, self.template_name, locals())
+
+class home(TemplateView):
+	template_name = 'index.html'
+
+class math_course(TemplateView):
+	template_name = 'cursos/matematicas.html'
+
+class programming_course(TemplateView):
+	template_name = 'cursos/programacion.html'
+
+class kitchen_course(TemplateView):
+	template_name = 'cursos/cocina.html'
+
+class user_profile(TemplateView):
+	template_name = 'perfil.html'
+
+class no_user(TemplateView):
+	template_name = 'nouser.html'
 
 @login_required(login_url='signin')
 def close(request):
