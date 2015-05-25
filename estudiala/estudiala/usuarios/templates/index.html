@@ -25,9 +25,7 @@
 }
     </style>
   <body>
-      {% if user.is_authenticated %}
       <nuevasala-fav ct="{{csrf_token}}"></nuevasala-fav>
-      {% endif %}
     <nav class="navbar">
       <inmg src="/static/images/logo.svg" class="navbar-icon">
       {% if user.is_authenticated %}
@@ -67,9 +65,10 @@
         </div>
         <div class="footerSection">
           <p>
-            Nuestras Redes Sociales
+            Login
           </p>
-          <img src="/static/images/facebook.svg" class="icon"><img src="/static/images/twitter.svg" class="icon">
+          <a href="{% url 'social:begin' 'facebook' %}"><img src="/static/images/facebook.svg" class="icon"</a>
+          <a href="{% url 'social:begin' 'twitter' %}"><img src="/static/images/twitter.svg" class="icon"></a>
         </div>
     </footer>
   </body>
