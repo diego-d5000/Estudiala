@@ -1,70 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-         {% load staticfiles%}
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic' rel='stylesheet' type='text/css'>
-    <title>Estudia.la | El Mejor lugar para estudiar en línea</title>
-  </head>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
-  <script src="github.commits.widget-min.js"></script>
-  <script>
-      $(function () {
-          $('#github-commits').githubInfoWidget(
-        { user: 'alexanderbeletsky', repo: 'github.commits.widget', branch: 'master', last: 5 });
-      });
-  </script>
-  <style type="text/css">
-    nuevasala-fab{
-      margin-right:2em;
-      position: absolute !important;
-      top: 30px;
-      right: 1em;
-      z-index: 99999;
-}
-    </style>
-  <body>
-      <nuevasala-fav ct="{{csrf_token}}"></nuevasala-fav>
-    <nav class="navbar">
-      <a href="http://localhost:8000" target="_top"><img src="/static/images/logo.svg" class="navbar-icon"></a>
+<html lang="en" onscroll="scrollElements()">
+<head>
+  <meta charset="UTF-8">
+  {% load staticfiles%}
+  <meta charset="UTF-8">
+  <meta name="theme-color" content="#F44336">
+  <meta name="msapplication-TileImage" content="{% static 'images/logo.png' %}">
+  <link rel="icon" href="{% static 'images/logo.png' %}" type="image/png"/>
+  <!--Statics-->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+  <link rel="import" href="{% static 'components/nuevasala-fab/nuevasala-fab.html' -%}">
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+  <title>Estudia.la | El Mejor Lugar para estudiar en Línea</title>
+</head>
+<body>
+  <nav id="nav">
+    <div class="Estudiala-leftBrand">
+      <img src="{% static 'images/logo.png' %}" class="Estudiala-logo" id="logo">
+      <span class="Estudiala-brand" id="title">Estudia.la</span>
+    </div>
+    <div class="Estudiala-rightBrand" id="rightBrand">
       {% if user.is_authenticated %}
-        <input type="button" class="ghost-button-white" value="Mi Perfil" onclick="window.open('/usuarios/profile','_self')">
-        <input type="button" class="ghost-button-white" value="Mis Tareas" onclick="window.open('/tareas/homework/','_self')">
-        <input type="button" class="ghost-button-white" value="Cerrar Sesión" onclick="window.open('/usuarios/close','_self')">
+        <span class="Estudiala-menuOption">Mi Perfil</span>
       {% else %}
-        <input type="button" class="ghost-button-white" value="Iniciar Sesión" onclick="window.open('/usuarios/signin','_self')">
-        <input type="button" class="ghost-button-white" value="Registrate" onclick="window.open('/usuarios/signup','_self')">
+        <span class="Estudiala-menuOption">Iniciar Sesión</span>
+        <span class="Estudiala-menuOption">Registrarme</span>
       {% endif %}
-      <a href="{% url 'social:begin' 'facebook' %}"><img style="float:left;" src="/static/images/facebook.svg" class="icon"</a>
-          <a href="{% url 'social:begin' 'twitter' %}"><img style="float:left; margin-left: 16px;" src="/static/images/twitter.svg" class="icon"></a>
-    </nav>
-    <h1>Estudia.la</h1>
-    <h2>Un recurso para aprender en línea, con una página bella</h2>
-    <p>
-      <img src="/static/images/github.svg" class="icon"><br>
-      <iframe class="githubFrame" src="http://tylerlh.github.com/github-latest-commits-widget/?username=diego-d5000&repo=Estudiala&limit=6&branch=develop"
-    allowtransparency="true" frameborder="0" scrolling="no" width="502px" height="252px"></iframe>
-    </p>
-    <footer>
-        <div class="footerSection">
-          <p>
-             Ayuda a Estudia.la a continuar
-          </p>
-          <p class="divDesc">
-            Somos un equipo de estudiantes buscando mejorar la calidad de la educacion.
-          </p>
-          <input type="button" class="ghost-button-white" value="Donar">
-        </div>
-        <div class="footerSection">
-          <p>
-            Mándanos tus comentarios
-          </p>
-          <p class="divDesc">
-            Si tienes alguna duda, aclaración, queja o lo que sea, comunicate con nosotros.
-          </p>
-          <input type="button" class="ghost-button-white" value="Chat">
-        </div>
-    </footer>
-  </body>
+    </div>
+  </nav>
+  <div class="Estudiala-description">
+    <h1>Comparte y adquiere conocimiento</h1>
+    <h2>Aprende ó enseña cosas nuevas, desde la comodidad de tu Ordenador</h2>
+  </div>
+  <div class="Estudiala-container">
+    <h1>Hello Container!</h1>
+  </div>
+</body>
 </html>
