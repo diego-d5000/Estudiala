@@ -12,39 +12,7 @@ html {
 	height: 512px;
 }
 
-
-
-nav {
-	width: 100%;
-	height: 64px;
-	padding: 8px;
-	color: #F44336;
-	position: fixed;
-	font-size: 32px;
-	line-height: 64px;
-	font-family: 'Lato', arial;
-	z-index: 3;
-
-	/*Transitions*/
-	-webkit-transition: all ease-out 0.5s;
-	-moz-transition: all ease-out 0.5s;
-	-ms-transition: all ease-out 0.5s;
-	-o-transition: all ease-out 0.5s;
-	transition: all ease-out 0.5s;
-}
-
-.Estudiala-logo {
-	width: 56px;
-	height: 56px;
-	float: left;
-
-	/*Transitions*/
-	-webkit-transition: all ease-out 0.5s;
-	-moz-transition: all ease-out 0.5s;
-	-ms-transition: all ease-out 0.5s;
-	-o-transition: all ease-out 0.5s;
-	transition: all ease-out 0.5s;
-}
+/* Navigation bar elements */
 
 .Estudiala-brand {
 	width:256px;
@@ -61,6 +29,7 @@ nav {
 	padding-right: 16px;
 	float: right;
 }
+ /* --- */
 
 .Estudiala-desktop {
 	background: url(../images/bg.jpg) no-repeat center center fixed; 
@@ -90,6 +59,36 @@ nav {
 }
 
 @media (min-width: 1025px) {
+	nav {
+		width: 100%;
+		height: 56px;
+		padding: 8px;
+		color: #F44336;
+		position: fixed;
+		font-size: 32px;
+		line-height: 64px;
+		font-family: 'Lato', arial;
+		z-index: 3;
+
+		/*Transitions*/
+		-webkit-transition: all ease-out 0.5s;
+		-moz-transition: all ease-out 0.5s;
+		-ms-transition: all ease-out 0.5s;
+		-o-transition: all ease-out 0.5s;
+		transition: all ease-out 0.5s;
+	}
+
+	.Estudiala-logo {
+		float: left;
+		width: 56px;
+		height: 56px;
+		/*Transitions*/
+		-webkit-transition: all ease-out 0.5s;
+		-moz-transition: all ease-out 0.5s;
+		-ms-transition: all ease-out 0.5s;
+		-o-transition: all ease-out 0.5s;
+		transition: all ease-out 0.5s;
+	}
 
 	.Estudiala-menuOption {
 		width: 50%;
@@ -117,6 +116,37 @@ nav {
 }
 
 @media (min-width: 641px) and (max-width: 1024px) {
+	nav {
+		width: 100%;
+		height: 40px;
+		padding: 8px;
+		color: #F44336;
+		position: fixed;
+		font-size: 24px;
+		line-height: 48px;
+		font-family: 'Lato', arial;
+		z-index: 3;
+
+		/*Transitions*/
+		-webkit-transition: all ease-out 0.5s;
+		-moz-transition: all ease-out 0.5s;
+		-ms-transition: all ease-out 0.5s;
+		-o-transition: all ease-out 0.5s;
+		transition: all ease-out 0.5s;
+	}
+
+	.Estudiala-logo {
+		float: left;
+		width: 40px;
+		height: 40px;
+		/*Transitions*/
+		-webkit-transition: all ease-out 0.5s;
+		-moz-transition: all ease-out 0.5s;
+		-ms-transition: all ease-out 0.5s;
+		-o-transition: all ease-out 0.5s;
+		transition: all ease-out 0.5s;
+	}
+
 	.Estudiala-menuOption {
 		width: 50%;
 		float: left;
@@ -143,6 +173,37 @@ nav {
 }
 
 @media (min-width: 0px) and (max-width: 640px) {
+	nav {
+		width: 100%;
+		height: 24px;
+		padding: 8px;
+		color: #F44336;
+		position: fixed;
+		font-size: 16px;
+		line-height: 32px;
+		font-family: 'Lato', arial;
+		z-index: 3;
+
+		/*Transitions*/
+		-webkit-transition: all ease-out 0.5s;
+		-moz-transition: all ease-out 0.5s;
+		-ms-transition: all ease-out 0.5s;
+		-o-transition: all ease-out 0.5s;
+		transition: all ease-out 0.5s;
+	}
+
+	.Estudiala-logo {
+		float: left;
+		width: 24px;
+		height: 24px;
+		/*Transitions*/
+		-webkit-transition: all ease-out 0.5s;
+		-moz-transition: all ease-out 0.5s;
+		-ms-transition: all ease-out 0.5s;
+		-o-transition: all ease-out 0.5s;
+		transition: all ease-out 0.5s;
+	}
+
 	.Estudiala-menuOption {
 		width: 50%;
 		float: left;

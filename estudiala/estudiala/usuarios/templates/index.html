@@ -30,11 +30,18 @@
     </div>
   </nav>
   <div class="Estudiala-description">
-    <h1>Comparte y adquiere conocimiento</h1>
-    <h2>Aprende ó enseña cosas nuevas, desde la comodidad de tu Ordenador</h2>
+    {% if user.is_authenticated %}
+      <button onclick="javascript:document.getElementByid('forma').style.display='block';">
+        
+      </button>
+    {% else %}
+      <h1>Comparte y adquiere conocimiento</h1>
+      <h2>Aprende ó enseña cosas nuevas, desde la comodidad de tu Ordenador</h2>
+    {% endif %}
   </div>
   <div class="Estudiala-container">
-    <h1>Hello Container!</h1>
+    <h1>Desde diseño hasta cocina</h1>
+    <h2>Encuentra una gran variedad de cursos aquí en Estudiando.la</h2>
   </div>
 </body>
 </html>
