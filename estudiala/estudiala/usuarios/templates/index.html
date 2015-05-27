@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" onscroll="scrollElements()">
+<html lang="es" onscroll="scrollElements()">
 <head>
   <meta charset="UTF-8">
   {% load staticfiles%}
@@ -14,26 +14,40 @@
   <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
   <title>Estudia.la | El Mejor Lugar para estudiar en Línea</title>
 </head>
-<body>
+<body onload="coursesGrid()">
+<div id="signin">
+  <a href="javascript:close('signin')">
+    <img src="{% static 'images/close.svg' %}">
+  </a>
+  <iframe src="/usuarios/signin" scrolling="no"></iframe>
+</div>
+<div id="signup">
+  <a href="javascript:close('signup')">
+    <img src="{% static 'images/close.svg' %}">
+  </a>
+  <iframe src="/usuarios/signin" scrolling="no"></iframe>
+</div>
   <nav id="nav">
     <div class="Estudiala-leftBrand">
-      <img src="{% static 'images/logo.png' %}" class="Estudiala-logo" id="logo">
-      <span class="Estudiala-brand" id="title">Estudia.la</span>
+      <a href="/" target="_top">
+        <img src="{% static 'images/logo.png' %}" class="Estudiala-logo" id="logo">
+        <span class="Estudiala-brand" id="title">Estudia.la</span>
+      </a>
     </div>
     <div class="Estudiala-rightBrand" id="rightBrand">
       {% if user.is_authenticated %}
-        <span class="Estudiala-menuOption">Mi Perfil</span>
+        <span class="Estudiala-menuOption"><a href="/usuarios/perfil">Mi Perfil</a></span>
       {% else %}
-        <span class="Estudiala-menuOption">Iniciar Sesión</span>
-        <span class="Estudiala-menuOption">Registrarme</span>
+        <span class="Estudiala-menuOption"><a href="javascript:showForms('signup','signin')">Iniciar Sesión</a></span>
+        <span class="Estudiala-menuOption"><a href="javascript:showForms('signin','signup')">Registrarme</a></span>
       {% endif %}
     </div>
   </nav>
   <div class="Estudiala-description">
     {% if user.is_authenticated %}
-      <button onclick="javascript:document.getElementByid('forma').style.display='block';">
-        
-      </button>
+      <h1>Que el conocimiento fluya</h1>
+      <h2>Presiona este botón para crear una sala nueva</h2>
+      <nuevasala-fab></nuevasala-fab>
     {% else %}
       <h1>Comparte y adquiere conocimiento</h1>
       <h2>Aprende ó enseña cosas nuevas, desde la comodidad de tu Ordenador</h2>
@@ -41,7 +55,72 @@
   </div>
   <div class="Estudiala-container">
     <h1>Desde diseño hasta cocina</h1>
-    <h2>Encuentra una gran variedad de cursos aquí en Estudiando.la</h2>
+    <h2>Encuentra una gran variedad de cursos, aquí en Estudiando.la</h2>
+    <div class="Estudiala-grid">
+      <div class="Estudiala-course">
+        <img src="{% static 'images/art.svg' %}"> 
+        Artes Plasticas
+      </div>
+      <div class="Estudiala-course">
+        <img src="{% static 'images/cooking.svg' %}">
+        Cocina
+      </div>
+      <div class="Estudiala-course">
+        <img src="{% static 'images/drawing.svg' %}"> 
+        Dibujo Técnico
+      </div>
+      <div class="Estudiala-course">
+        <img src="{% static 'images/economy.svg' %}">
+        Economía
+      </div>
+      <div class="Estudiala-course">
+        <img src="{% static 'images/grammar.svg' %}"> 
+        Gramatica
+      </div>
+      <div class="Estudiala-course">
+        <img src="{% static 'images/math.svg' %}">
+        Matemáticas
+      </div>
+      <div class="Estudiala-course">
+        <img src="{% static 'images/programming.svg' %}"> 
+        Programación
+      </div>
+      <div class="Estudiala-course">
+        <img src="{% static 'images/knit.svg' %}">
+        Tejido
+      </div>
+    </div>
+    <br><br>
+    <p>
+      Cursos con clases en vivo, Interactua con los demás usuarios del curso con un chat en tiempo real.
+    </p>
+    <p>
+      ¿Te lo perdiste?, siempre puedes volver a ver el curso, cuando quieras.
+    </p>
+    <p>
+      Registrate o Inicia Sesión en Estudiando.la y empieza a dsifrutar de todas estas caracteristicas.
+    </p>
+    <hr>
+    <footer>
+      <div>
+        <h3>Ayúdanos a mejorar</h3>
+        Tú puedes ayudar a Estudiando.la a mejorar<br>
+        Disparanos la siguiente taza de café, o el almuerzo.<br>
+        <h3>Donar</h3>
+      </div>
+      <div>
+        <h3>¿Tienes alguna duda?</h3>
+        Contactanos, chatea con nosotros<br>
+        y te ayudaremos a solucionar tu problea o aclarar tu duda.<br>
+        <h3>Chat</h3>
+      </div>
+      <div>
+        <h3>Seguimos Trabajando</h3>
+        Puedes tener seguimiento de nuestro trabajo viendo<br>
+        nuestros commits en Github<br>
+        <a href="https://github.com/diego-d5000/Estudiala/commits/develop" target="_top"><img src="{% static 'images/github.svg' %}"></a>
+      </div>
+    </footer>
   </div>
 </body>
 </html>
