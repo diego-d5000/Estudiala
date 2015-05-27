@@ -45,3 +45,13 @@ class ChatView(APIView):
                         return Response(serializer.data, status=status.HTTP_201_CREATED)
                 else:
                         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+def get_class_type(request, class_type):
+    user = request.user
+    #Crear instancia de roomtype
+    all_classes = Room.objects.filter(r_type = class_type)
+    return render(
+        request,
+        'classroom/class_type.html',
+        {'all_classes': all_classes}
+    )

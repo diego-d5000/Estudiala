@@ -44,7 +44,6 @@ class homework_error(TemplateView):
 def get_homework(request):
 	user = request.user
 	homeworks = Tarea.objects.filter(user=user)
-	print (homeworks)
 	return render(
 		request,
 		'homework1.html',

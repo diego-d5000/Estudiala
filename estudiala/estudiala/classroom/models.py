@@ -1,8 +1,14 @@
 from django.db import models
+class Room_type(models.Model):
+	room_typ = models.CharField(max_length=225)
+
+	def __unicode__(self):
+		return self.room_typ
 
 class Room(models.Model):
 	name = models.CharField(max_length=128)
 	n = models.CharField(max_length=16)
+	r_type = models.ForeignKey(Room_type)
 
 	def __unicode__(self):
 		return self.name
