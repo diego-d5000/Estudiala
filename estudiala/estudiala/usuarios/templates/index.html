@@ -44,14 +44,13 @@
     </div>
   </nav>
   <div class="Estudiala-description">
-    {% if user.is_authenticated %}
-      <h1>Que el conocimiento fluya</h1>
-      <h2>Presiona este botón para crear una sala nueva</h2>
-      <nuevasala-fab></nuevasala-fab>
-    {% else %}
-      <h1>Comparte y adquiere conocimiento</h1>
-      <h2>Aprende ó enseña cosas nuevas, desde la comodidad de tu Ordenador</h2>
-    {% endif %}
+    <h1>Comparte y adquiere conocimiento</h1>
+    <h2>Aprende ó enseña cosas nuevas, desde la comodidad de tu Ordenador</h2>
+    <div class="Estudiala-cta-grid">
+      <input type="button" class="Estudiala-cta" value="Quiero dar una clase">
+      <input type="button" class="Estudiala-cta" value="Quiero encontrar una clase">
+      <nuevasala-fab cf="{{crsf_token}}"></nuevasala-fab>
+    </div>
   </div>
   <div class="Estudiala-container">
     <h1>Desde diseño hasta cocina</h1>
