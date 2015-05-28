@@ -161,6 +161,7 @@ footer > div > img {
 	height: 16px;
 	margin-left: -16px;
 	position: absolute;
+	border-radius: 50%; 
 	background-color: #000;
 }
 
@@ -170,6 +171,36 @@ iframe {
 	width: 100%;
 	border: none;
 	position: absolute;
+}
+
+.Estudiala-cta-grid {
+	width: 100%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.Estudiala-cta {
+	width: 48%;
+	float: left;
+	margin-left: 1%;
+	vertical-align: middle;
+	background-color: transparent;
+	border: 2px solid #FFF;
+	/*Transitions*/
+	-webkit-transition: all ease-out 0.2s;
+	-moz-transition: all ease-out 0.2s;
+	-ms-transition: all ease-out 0.2s;
+	-o-transition: all ease-out 0.2s;
+	transition: all ease-out 0.2s;
+}
+
+.Estudiala-cta:hover {
+	opacity: 0.5;
+}
+
+.Estudiala-cta:focus {
+	opacity: 0.7;
 }
 
 @media (min-width: 1025px) {
@@ -232,6 +263,16 @@ iframe {
 	.Estudiala-course {
 		font-size: xx-large;
 	}
+
+	.Estudiala-cta {
+		height: 64px;
+		font-size: large;
+		border-radius: 8px;
+	}
+
+	.Estudiala-cta-grid {
+		width: 60%;
+	}
 }
 
 @media (min-width: 641px) and (max-width: 1024px) {
@@ -292,6 +333,13 @@ iframe {
 
 	.Estudiala-course {
 		font-size: medium;
+	}
+
+	.Estudiala-cta {
+		height: 32px;
+		font-size: medium;
+		border-radius: 6px;
+		color: #FFF;
 	}
 }
 
@@ -354,5 +402,19 @@ iframe {
 
 	.Estudiala-course {
 		font-size: small;
+	}
+
+	.Estudiala-cta {
+		height: 32px;
+		font-size: xx-small;
+		border-radius: 4px;
+	}
+
+	h1 {
+		font-size: large;
+	}
+	h2 {
+		font-size: medium;
+	}
 	}
 }
