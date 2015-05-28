@@ -144,6 +144,8 @@ footer > div > img {
 	margin-right: auto;
 }
 
+/**/
+
 #signin, #signup {
 	z-index: 6;
 	display: none;
