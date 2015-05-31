@@ -92,7 +92,7 @@ class math_course(TemplateView):
 	template_name = 'cursos/matematicas.html'
 
 class programming_course(TemplateView):
-	template_name = 'cursos/programacion.html'
+	template_name = 'cursos.html'
 
 class kitchen_course(TemplateView):
 	template_name = 'cursos/cocina.html'
@@ -103,7 +103,10 @@ class user_profile(TemplateView):
 class no_user(TemplateView):
 	template_name = 'nouser.html'
 
+class courses(TemplateView):
+	template_name = 'cursos.html'
+
 @login_required(login_url='signin')
 def close(request):
 	logout(request)
-	return redirect('signin')
+	return redirect('home')

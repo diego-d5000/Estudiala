@@ -1,14 +1,47 @@
-{% extends 'base.html' %}
-{% block content %}
+<!DOCTYPE HTML>
 
+<html>
+	<head>
+		<title>Estudia.la</title>
+		<meta charset="utf-8" />
+    {% load staticfiles%}
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+		<link rel="import" href="{% static 'components/nuevasala-fab/nuevasala-fab.html' -%}">
+		
+	</head>
+	<body class="landing">
 
-		<form action="" method="post" enctype="multipart/form-data">
-			{% csrf_token %}
-			{{form.as_p}}
-			<input type="submit" value="Submit">
-		</form>
-	</section>	
-</body>
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<h1><a href="#banner" class="more scrolly"><img src="{% static 'images/logowhite.png' %}" height="20px" > Estudia.la</a></h1>
+					</header>
+
+				
+				<!-- One -->
+				<div style="width:100%" margin>
+					<form action="" method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+					{{form.as_p}}
+					<input type="submit" value="Submit">
+					</form>
+				</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'js/jquery.min.js' %}" ></script>
+			<script src="{% static 'js/jquery.scrollex.min.js' %}" ></script>
+			<script src="{% static 'js/jquery.scrolly.min.js' %}" ></script>
+			<script src="{% static 'js/skel.min.js' %}" ></script>
+			<script src="{% static 'js/util.js' %}" ></script>
+			<script src="{% static 'js/main.js' %}" ></script>
+			<script type="text/javascript" src="assets/js/jquery.leanModal.min.js"></script>
+
+	</body>
 </html>
 
-{% endblock %}
+		
+	

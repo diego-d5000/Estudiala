@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<table>
+			<tr>
+				<td>Nombre</td>
+				<td>n</td>
+			</tr>
+			{% for class in all_classes%}
+			<tr>
+				<td>{{class.name}}</td>
+				<td>{{class.n}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+</body>
+</html>

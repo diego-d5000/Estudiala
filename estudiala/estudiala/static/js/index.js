@@ -18,3 +18,16 @@ window.onscroll = function(ev) {
 		document.getElementById("nav").style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.26)";
 	}
 };
+
+function showForms(form1, form2) {
+	var form = document.getElementById(form1);
+	var form2 = document.getElementById(form2);
+
+	form.style.display = "block";
+	form2.style.display = "none";
+}
+
+function close(form) {
+	var form = document.getElementById(form);
+	form.style.display = "none";
+}

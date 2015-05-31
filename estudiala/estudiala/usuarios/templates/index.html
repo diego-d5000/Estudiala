@@ -8,8 +8,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
 		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+		<link rel="import" href="{% static 'components/nuevasala-fab/nuevasala-fab.html' -%}">
 		
 	</head>
+
 	<body class="landing">
 
 		<!-- Page Wrapper -->
@@ -17,9 +19,7 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<h1><a href="#banner" class="more scrolly"><img src="images/logowhite.png" height="20px" > Estudia.la</a></h1>
-
-
+						<h1><a href="#banner" class="more scrolly"><img src="{% static 'images/logowhite.png' %}" height="20px" > Estudia.la</a></h1>
 
 						<nav id="nav">
 							<ul>
@@ -27,15 +27,30 @@
 								<li class="special">
 									<a href="#menu" class="menuToggle"><span>Perfil</span></a>
 									<div id="menu">
-										&nbsp&nbsp&nbsp&nbsp&nbsp<img src="http://admissions.berkeley.edu/sites/default/files/UCB_landingpage_images_600x300_212.jpg" alt="" width="80%">
-										<ul>
-
+										{% if user.is_authenticated %}
+											&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="https://www.aptitudesoftware.com/wp-content/uploads/Round-profile-2.png" alt="" width="80%">
+											<ul>
+										{% else %}
+											&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="http://www.zkoop.com/assets/empty_round_profile-9a29dae4df9eef222c331466c2ded02b.png" alt="" width="70%">
+											<ul>
+										{% endif %}		
 											
-											<li><a href="#cursos">Cursos</a></li>
-											<li><a href="#">Registrarse</a></li>
-											<li><a href="#">Iniciar Sesión</a></li>
-											<li><a href="#">Facebook</a></li>
-											<li><a href="#">Twitter</a></li>
+											
+											{% if user.is_authenticated %}
+										      <li><a href="#cursos">Cursos</a></li>
+										      <li><a href="{#tarea}">Enviar tarea</a></li>
+										      <li><a href="javascript:showForms('signin','signup')">Iniciar Sesion</a></li>
+
+
+
+
+
+										      <li><a href="{% url 'close' %}">Cerrar Sesión</a></li>
+										    {% else %}
+										    <p>Inicia sesión o regístrate con tus redes sociales</p>
+											<a href="{% url 'social:begin' 'facebook' %}"><img src="{% static 'images/facebook.svg' %}"></a>
+											<a href="{% url 'social:begin' 'twitter' %}"><img src="{% static 'images/twitter.svg' %}"></a>
+											{% endif %}
 										</ul>
 									</div>
 								</li>
@@ -51,12 +66,18 @@
 							para aprender de los mejores.<br />
 							sin desplazarte</a>.</p>
 							<ul class="actions">
-								<li><a href="#cursos" class="button special" class="skel-layers-ignoreHref" class="more scrolly">Empieza a aprender</a></li>
-								<li><a href="#three" class="button special" class="more scrolly">Compartir conocimiento</a></li>
+								<a href="#cursos" class="button special" class="more scrolly">Empieza a aprender</a>
+								<nuevasala-fab cf="{{crsf_token}}" style="button special"></nuevasala-fab>
 							</ul>
 
 						</div>
-						<a href="#one" class="more scrolly">Ver más</a>
+						<div id="signin">
+							  <a href="javascript:close('signin')">
+								   <img src="{% static 'images/close.svg' %}">
+								   </a>
+								   <iframe src="/usuarios/signin" scrolling="no"></iframe>
+							  </div>
+						<a href="#three" class="more scrolly">Ver más</a>
 					</section>
 
 				<!-- One -->
@@ -78,12 +99,19 @@
 
 				<!-- Two -->
 					
-					<!---
 					<section id="cursos" class="wrapper alt style2">
 						
-						<iframe src="cursos.html" width="100%" height="700px"></iframe>
-					-->
-				<!-- Three -->
+						<iframe src="{% url 'cursos' %}" width="100%" height="700px"></iframe>
+
+					{% if user.is_authenticated %}
+					<section id="curso" class="wrapper style3 special">
+
+						<iframe src="{% url 'homework' %}" width="50%" height="700px" align="center"></iframe>
+						</section>
+
+						 
+					{% else %}
+					<!-- Three -->
 					<section id="three" class="wrapper style3 special">
 						<div class="inner">
 							<header class="major">
@@ -120,6 +148,10 @@
 						</div>
 					</section>
 
+					{% endif %}
+
+
+				
 					<section id="cta" class="wrapper style4">
 						<div class="inner">
 							<header>

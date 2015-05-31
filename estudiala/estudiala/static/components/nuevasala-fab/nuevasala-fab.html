@@ -15,9 +15,9 @@
     <script src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" href="nuevasala-fab.css">
 
-    <paper-fab icon="account-balance" title="nuevasala" on-click={{fabclick}}></paper-fab>
+    <li><button class="bs" on-click={{fabclick}}>Compartir conocimiento</button></li>
     
-    <paper-dialog id="dialog" autoCloseDisabled layered="false">
+    <paper-dialog id="dialog" layered="false">
       <core-tooltip label="1. Dale nombre a la sala" position="top" class="dialogcont" show>
       <paper-input id="roomname" label="Nombre de la Sala" floatingLabel></paper-input>
       </core-tooltip>

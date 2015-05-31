@@ -9,14 +9,6 @@ https://docs.djangoproject.com/en/1.8/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
-#Gmail config
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'estudiala@gmail.com'
-EMAIL_HOST_PASSWORD = 'estudiala123'
-EMAIL_PORT = 587
-
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
@@ -46,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'social.apps.django_app.default',
     'rest_framework',
+    'djrill',
     'usuarios',
     'tareas',
     "classroom",
@@ -132,5 +125,12 @@ SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 SOCIAL_AUTH_FACEBOOK_KEY = '1598381703771822'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'ff06e958050978c2c9de1392a1bb7a6f'
 
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
 SOCIAL_AUTH_TWITTER_KEY = 'PnDkhbiaNcXLTORuxGEQYs3cn'
 SOCIAL_AUTH_TWITTER_SECRET = '8HcTzkDeA5vk4gLr7DPTndpSBy6eXxdxCICT4CxzB8oW8QOxsX'
+
+EMAIL_HOST_USER = 'estudiala@gmail.com'
+MANDRILL_API_KEY='hlERGs-DdD85X-3ZlwYNFw'
+EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'
+DEFAULT_FROM_EMAIL = 'estudiala@gmail.com'
