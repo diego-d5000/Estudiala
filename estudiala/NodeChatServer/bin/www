@@ -22,12 +22,52 @@ app.set('port', port);
 var server = http.createServer(app);
 
 /**
+ * Init sockets
+ */
+
+var io = require( "socket.io" )( server );
+
+/**
  * Listen on provided port, on all network interfaces.
  */
 
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+/**
+ * Init sockets events
+ */
+
+var sala1 = io.of('/devroom');
+sala1.on('connection', function(socket){
+    console.log("new socket connected in devroom");
+    socket.on('chat message', function(msg){
+        msg.date = new Date();
+        sala1.emit('chat message', msg);
+    });
+
+});
+
+io.on("connection", function(socket){
+    console.log("nueva conexion en socket general");
+
+    socket.on('newroom', function(msg){
+        console.log("nueva sala: " + msg);
+        io.of("/" + msg).on('connection', function(socket){
+            console.log("nueva conexion en nueva sala");
+            socket.on('chat message', function(msg){
+                msg.date = new Date();
+                io.of(this.nsp.name).emit('chat message', msg);
+            });
+        });
+    });
+
+    socket.on('closeroom', function(msg){
+        delete io.nsps['/' + msg];
+        console.log("sala borrada: + msg");
+    });
+});
 
 /**
  * Event listener for HTTP server "error" event.
