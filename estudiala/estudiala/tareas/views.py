@@ -26,7 +26,7 @@ class homework(View):
 			to_list = [to_email, user_email]
 			homework_doc = request.FILES['homerwork_doc']
 			try:
-				mail = EmailMessage(subject,name,settings.EMAIL_HOST_USER, to_list)
+				mail = EmailMessage(subject,name,email, to_list)#settings.EMAIL_HOST_USER
 				mail.attach(homework_doc.name, homework_doc.read(), homework_doc.content_type)
 				mail.send()
 				return redirect('homework_success')

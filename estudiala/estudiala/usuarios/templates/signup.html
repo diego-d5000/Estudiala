@@ -56,7 +56,7 @@
     <h1>Inicio se Sesión</h1>
     <h2>Inicia sesión para acceder a todas las funciones de Estudia.la</h2>
     <h2><a href="{% url 'home' %}">Home</a></h2>
-    <h2>¿Ya tienes cuenta?, inicia sesión<a href="{% url 'signin' %}">aqui</a></h2>
+    <h2>¿Ya tienes cuenta?, inicia sesión <a href="{% url 'signin' %}">aqui</a></h2>
     <p>
     	{% block content %}
 			<section>
@@ -68,14 +68,28 @@
 			</section>
 		{% endblock %}
 	</p>
-    <!-- Scripts -->
-        <script src="{% static 'js/jquery.min.js' %}" ></script>
-        <script src="{% static 'js/jquery.scrollex.min.js' %}" ></script>
-        <script src="{% static 'js/jquery.scrolly.min.js' %}" ></script>
-        <script src="{% static 'js/skel.min.js' %}" ></script>
-        <script src="{% static 'js/util.js' %}" ></script>
-        <script src="{% static 'js/main.js' %}" ></script>
-        <script type="text/javascript" src="assets/js/jquery.leanModal.min.js"></script>
+<!-- Footer -->
+	<footer id="footer">
+		<ul class="icons">
+			<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+			<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+			<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+		</ul>
+		<ul class="copyright">
+			<li>&copy; Estudia.la</li><li>Dev.F Batch 4</a></li>
+		</ul>
+	</footer>
 
-    </body>
-    </html>
+</div>
+
+<!-- Scripts -->
+<script src="{% static 'js/jquery.min.js' %}" ></script>
+<script src="{% static 'js/jquery.scrollex.min.js' %}" ></script>
+<script src="{% static 'js/jquery.scrolly.min.js' %}" ></script>
+<script src="{% static 'js/skel.min.js' %}" ></script>
+<script src="{% static 'js/util.js' %}" ></script>
+<script src="{% static 'js/main.js' %}" ></script>
+<script type="text/javascript" src="assets/js/jquery.leanModal.min.js"></script>
+
+</body>
+</html>
