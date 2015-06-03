@@ -22,12 +22,6 @@ app.set('port', port);
 var server = http.createServer(app);
 
 /**
- * Init sockets
- */
-
-var io = require( "socket.io" )( server );
-
-/**
  * Listen on provided port, on all network interfaces.
  */
 
@@ -38,6 +32,7 @@ server.on('listening', onListening);
 /**
  * Init sockets events
  */
+var io = require( "socket.io" )( server );
 
 var sala1 = io.of('/devroom');
 sala1.on('connection', function(socket){
