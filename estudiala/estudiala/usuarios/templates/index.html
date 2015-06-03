@@ -40,11 +40,12 @@
 
 											{% if user.is_authenticated %}
 										      <li><a href="#cursos">Cursos</a></li>
-										      <li><a href="{#tarea}">Enviar tarea</a></li>
-										      <li><a href="javascript:showForms('signin','signup')">Iniciar Sesion</a></li>
+										      <li><a href="#tareas">Enviar tarea</a></li>
 										      <li><a href="{% url 'close' %}">Cerrar Sesión</a></li>
 										    {% else %}
 										    <p>Inicia sesión o regístrate con tus redes sociales</p>
+											<li><a href="{% url 'signin' %}">Iniciar Sesion</a></li>
+											<li><a href="{% url 'signup' %}">Registrate</a></li>
 											<a href="{% url 'social:begin' 'facebook' %}"><img src="{% static 'images/facebook.svg' %}"></a>
 											<a href="{% url 'social:begin' 'twitter' %}"><img src="{% static 'images/twitter.svg' %}"></a>
 											{% endif %}
@@ -62,10 +63,15 @@
 							<p>Un recurso online<br />
 							para aprender de los mejores<br />
 							sin desplazarte</a>.</p>
+							{% if user.is_authenticated %}
 							<ul class="actions">
 								<a href="#cursos" class="button special" class="more scrolly">Empieza a aprender</a>
 								<nuevasala-fab ct="{{csrf_token}}" class="button special"></nuevasala-fab>
 							</ul>
+							{% else %}
+								<a href="#cursos" class="button special" class="more scrolly">Empieza a aprender</a>
+								<a href="{% url 'signin' %}" class="button special" class="more scrolly">Compatir Conocimiento</a>
+							{% endif %}
 
 						</div>
 						<div id="signin">
@@ -97,16 +103,12 @@
 				<!-- Two -->
 
 					<section id="cursos" class="wrapper alt style2">
-
 						<iframe src="{% url 'cursos' %}" width="100%" height="700px"></iframe>
-
 					{% if user.is_authenticated %}
-					<section id="curso" class="wrapper style3 special">
-
+					<section id="tareas" class="wrapper style3 special">
+						<h3>Manda tu tarea</h3>
 						<iframe src="{% url 'homework' %}" width="50%" height="700px" align="center"></iframe>
 						</section>
-
-
 					{% else %}
 					<!-- Three -->
 					<section id="three" class="wrapper style3 special">

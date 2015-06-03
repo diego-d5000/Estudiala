@@ -14,7 +14,7 @@ class NewUserCreationForm(UserCreationForm):
 	#validar que el email no exista
 	class Meta:
 		model = User
-		fields = ('username','email', 'first_name', 'last_name', 'password')
+		fields = ('username','email', 'first_name', 'last_name')
 		widgets = {
 			'username': forms.TextInput(
 				attrs={'class': 'input_field input_field-social',

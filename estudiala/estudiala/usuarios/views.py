@@ -61,8 +61,6 @@ class signin(View):
 					user_object=None
 					descript = user_object
 				if descript is None:
-					return redirect('information')
-				else:
 					return redirect('home')
 			else:
 				return redirect('nouser')

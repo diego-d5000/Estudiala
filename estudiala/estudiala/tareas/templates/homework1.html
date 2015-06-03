@@ -19,6 +19,8 @@
 				<td>{{tarea.to_email}}</td>
 				<td>{{tarea.current_date}}</td>
 			</tr>
+			{% empty %}
+			<h4>No hay tareas todavia</h4>
 			{% endfor %}
 		</table>
 </body>

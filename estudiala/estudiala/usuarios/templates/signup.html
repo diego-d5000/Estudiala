@@ -15,19 +15,10 @@
       });
   </script>
   <body>
-    <nav class="navbar">
-      <a href="http://localhost:8000" target="_top"><img src="/static/images/logo.svg" class="navbar-icon"></a>
-      {% if user.is_authenticated %}
-        <input type="button" class="ghost-button-white" value="Mi Perfil" onclick="window.open('/usuarios/profile','_self')">
-        <input type="button" class="ghost-button-white" value="Mis Tareas" onclick="window.open('/tareas/homework/','_self')">
-        <input type="button" class="ghost-button-white" value="Cerrar Sesión" onclick="window.open('/usuarios/close/','_self')">
-      {% else %}
-        <input type="button" class="ghost-button-white" value="Iniciar Sesión" onclick="window.open('/usuarios/signin/','_self')">
-        <input type="button" class="ghost-button-white" value="Registrate" onclick="window.open('/usuarios/signup/','_self')">
-      {% endif %}
-    </nav>
     <h1>Inicio se Sesión</h1>
     <h2>Inicia sesión para acceder a todas las funciones de Estudia.la</h2>
+    <h2><a href="{% url 'home' %}">Home</a></h2>
+    <h2>¿Ya tienes cuenta?, inicia sesión<a href="{% url 'signin' %}">aqui</a></h2>
     <p>
     	{% block content %}
 			<section>
