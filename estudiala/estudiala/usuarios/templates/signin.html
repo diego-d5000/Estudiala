@@ -1,25 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic' rel='stylesheet' type='text/css'>
-    <title>Estudia.la | El Mejor lugar para estudiar en línea</title>
-  </head>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
-  <script src="github.commits.widget-min.js"></script>
-  <script>
-      $(function () {
-          $('#github-commits').githubInfoWidget(
-        { user: 'alexanderbeletsky', repo: 'github.commits.widget', branch: 'master', last: 5 });
-      });
-  </script>
-  <script type="text/javascript">
-  function placeholders() {
-    document.getElementById("id_email").setAttribute("placeholder", "Introduce tu correo aquí");
-  }
-  </script>
-  <body onload="placeholders()">
+<html>
+	<head>
+		<title>Estudia.la</title>
+		<meta charset="utf-8" />
+    {% load staticfiles%}
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+		<link rel="import" href="{% static 'components/nuevasala-fab/nuevasala-fab.html' -%}">
+
+                <script src="{% static 'components/webcomponentsjs/webcomponents.js' %}"></script>
+
+	</head>
+
+	<body class="landing">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<h1><a href="#banner" class="more scrolly"><img src="{% static 'images/logowhite.png' %}" height="20px" > Estudia.la</a></h1>
+
+						<nav id="nav">
+							<ul>
+
+								<li class="special">
+									<a href="#menu" class="menuToggle"><span>Perfil</span></a>
+									<div id="menu">
+										{% if user.is_authenticated %}
+											&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="https://www.aptitudesoftware.com/wp-content/uploads/Round-profile-2.png" alt="" width="80%">
+											<ul>
+										{% else %}
+											&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="http://www.zkoop.com/assets/empty_round_profile-9a29dae4df9eef222c331466c2ded02b.png" alt="" width="70%">
+											<ul>
+										{% endif %}
+
+
+											{% if user.is_authenticated %}
+										      <li><a href="#cursos">Cursos</a></li>
+										      <li><a href="#tareas">Enviar tarea</a></li>
+										      <li><a href="{% url 'close' %}">Cerrar Sesión</a></li>
+										    {% else %}
+										    <p>Inicia sesión o regístrate con tus redes sociales</p>
+											<li><a href="{% url 'signin' %}">Iniciar Sesion</a></li>
+											<li><a href="{% url 'signup' %}">Registrate</a></li>
+											<a href="{% url 'social:begin' 'facebook' %}"><img src="{% static 'images/facebook.svg' %}"></a>
+											<a href="{% url 'social:begin' 'twitter' %}"><img src="{% static 'images/twitter.svg' %}"></a>
+											{% endif %}
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</nav>
+					</header>
     <h1>Inicio se Sesión</h1>
     <h2>Inicia sesión para acceder a todas las funciones de Estudia.la</h2>
     <h2><a href="{% url 'home' %}">Home</a></h2>
@@ -33,5 +66,14 @@
 			</form>
 		</section>
 	</p>
+    <!-- Scripts -->
+        <script src="{% static 'js/jquery.min.js' %}" ></script>
+        <script src="{% static 'js/jquery.scrollex.min.js' %}" ></script>
+        <script src="{% static 'js/jquery.scrolly.min.js' %}" ></script>
+        <script src="{% static 'js/skel.min.js' %}" ></script>
+        <script src="{% static 'js/util.js' %}" ></script>
+        <script src="{% static 'js/main.js' %}" ></script>
+        <script type="text/javascript" src="assets/js/jquery.leanModal.min.js"></script>
+
   </body>
-</html>
+  </html>
