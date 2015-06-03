@@ -1,14 +1,28 @@
-<html>
-	<body>
-	    <div class="section" id="index-banner">
-	        <div class="container">
-	          <div class="row">
-	            <div class="col s12 m9">
-	              <h1 class="header center-on-small-only">Sobre Materialize</h1>
-	              <h4 class="light red-text text-lighten-4 center-on-small-only">Aprende sobre Material Design y nuestro Equipo De Desarrollo</h4>
-	            </div>
-	            <div class="col s12 m3">
+<!DOCTYPE HTML>
 
+<html>
+	<head>
+		<title>Estudia.la</title>
+		<meta charset="utf-8" />
+    {% load staticfiles%}
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+		<link rel="import" href="{% static 'components/nuevasala-fab/nuevasala-fab.html' -%}">
+
+	</head>
+	<body class="landing">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<h1><a href="#banner" class="more scrolly"><img src="{% static 'images/logowhite.png' %}" height="20px" > Estudia.la</a></h1>
+					</header>
+	            <div class="col s12 m3">
+					<img src="{% static 'images/Homework_success.png' %}" height="200px" width="200" >
+					<h1>La tarea se mando correctamente</h1>
 	            </div>
 	          </div>
 	        </div>
@@ -16,28 +30,16 @@
 
 
 	<h1>Ya pifó<h1>
-		<!-- Footer -->
-		    <footer id="footer">
-		        <ul class="icons">
-		            <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-		            <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-		            <li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
-		        </ul>
-		        <ul class="copyright">
-		            <li>&copy; Estudia.la</li><li>Dev.F Batch 4</a></li>
-		        </ul>
-		    </footer>
-
-		</div>
-
 		<!-- Scripts -->
-		<script src="{% static 'js/jquery.min.js' %}" ></script>
-		<script src="{% static 'js/jquery.scrollex.min.js' %}" ></script>
-		<script src="{% static 'js/jquery.scrolly.min.js' %}" ></script>
-		<script src="{% static 'js/skel.min.js' %}" ></script>
-		<script src="{% static 'js/util.js' %}" ></script>
-		<script src="{% static 'js/main.js' %}" ></script>
-		<script type="text/javascript" src="assets/js/jquery.leanModal.min.js"></script>
+			<script src="{% static 'js/jquery.min.js' %}" ></script>
+			<script src="{% static 'js/jquery.scrollex.min.js' %}" ></script>
+			<script src="{% static 'js/jquery.scrolly.min.js' %}" ></script>
+			<script src="{% static 'js/skel.min.js' %}" ></script>
+			<script src="{% static 'js/util.js' %}" ></script>
+			<script src="{% static 'js/main.js' %}" ></script>
+			<script type="text/javascript" src="assets/js/jquery.leanModal.min.js"></script>
 
-		</body>
-		</html>
+	</body>
+	</html>
+
+		
