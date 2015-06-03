@@ -15,21 +15,21 @@
     <script src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" href="nuevasala-fab.css">
 
-    <li><button class="bs" on-click={{fabclick}}>Compartir conocimiento</button></li>
-    
+    <a class="bs" on-click={{fabclick}}>Compartir conocimiento</a>
+
     <paper-dialog id="dialog" layered="false">
       <core-tooltip label="1. Dale nombre a la sala" position="top" class="dialogcont" show>
       <paper-input id="roomname" label="Nombre de la Sala" floatingLabel></paper-input>
       </core-tooltip>
-      
+
       <core-tooltip label="2. Inicia el Hangout Onair" position="top" class="dialogcont" show>
       <google-hangout-button type="onair" width="175" topic="{{roomname}}" id="hangout" ></google-hangout-button>
       </core-tooltip>
-      
+
       <core-tooltip label="3. Coloca el ID de tu Hangout" position="top" class="dialogcont" show>
       <paper-input id="urlid" label="URL de Hangout" floatingLabel></paper-input>
       </core-tooltip> <br>
-    
+
       <paper-button on-click="{{newroom}}" affirmative autofocus>Crear</paper-button>
     </paper-dialog>
 
@@ -47,11 +47,11 @@
       ready: function() {
         this.socket = io(':3000/');
       },
-      
+
       fabclick: function() {
         this.$.dialog.toggle();
       },
-      
+
       newroom: function() {
         function YouTubeGetID(url){
           var ID = '';
@@ -74,7 +74,7 @@
         this.socket.emit("newroom", this.nid);
         document.location.href = "/classroom/room/?n=" + this.nid;
       }
-      
+
     });
   </script>
 </polymer-element>

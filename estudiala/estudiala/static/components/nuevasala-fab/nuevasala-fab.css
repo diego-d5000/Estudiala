@@ -7,10 +7,6 @@
   font-family: Helvetica, sans-serif;
 }
 
-:host(.bs){
-  
-}
-
 ::content > * {
   border: 1px solid #aaa;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -19,6 +15,10 @@
 ::content * {
   font-size: 16px;
   padding: 10px;
+}
+
+.bs {
+  text-decoration: none;
 }
 
 #title {
@@ -50,7 +50,7 @@
       width: 300px;
       height: 300px;
     }
-    
+
 .dialogcont {
   margin-top: 2em;
   margin-left: 2em;
