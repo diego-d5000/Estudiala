@@ -4,7 +4,9 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import Usuario
 from django.views.generic import View, TemplateView
 from django.contrib.auth.decorators import login_required
-from .forms import NewUserCreationForm, UserInformationForm
+from django.core.mail import EmailMessage
+from .forms import NewUserCreationForm, UserInformationForm, ContactForm
+from django.conf import settings
 
 class signup(View):
 	template_name = 'signup.html'
@@ -83,17 +85,33 @@ class information(View):
 		else:
 			return render(request, self.template_name, locals())
 
+class contact(View):
+	template_name = 'contact.html'
+
+	def get(self,request):
+		form = ContactForm()
+		return render(request, self.template_name, locals())
+
+	def post(self,request):
+		form = ContactForm(request.POST)
+		if form.is_valid():
+			subject = request.POST['subject']
+			first_name = request.POST['first_name']
+			last_name = request.POST['last_name']
+			message = first_name + " " + last_name + " " + request.POST['message']
+			sender = request.POST['sender']
+			print message
+			try:
+				mail = EmailMessage(subject, message, sender, settings.EMAIL_HOST_USER)
+				mail.send()
+				return redirect('home')
+			except:
+				return redirect('contact_email_error')
+		else:
+			return render(request, self.template_name, locals())
+
 class home(TemplateView):
 	template_name = 'index.html'
-
-class math_course(TemplateView):
-	template_name = 'cursos/matematicas.html'
-
-class programming_course(TemplateView):
-	template_name = 'cursos.html'
-
-class kitchen_course(TemplateView):
-	template_name = 'cursos/cocina.html'
 
 class user_profile(TemplateView):
 	template_name = 'perfil.html'

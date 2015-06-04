@@ -33,10 +33,7 @@ class NewUserCreationForm(UserCreationForm):
 				'placeholder': 'Ingresa tu apellido'}
 			),
 		}
-
-
 #	def clean_email():
-
 #Information Form
 class UserInformationForm(forms.ModelForm):
 
@@ -47,3 +44,10 @@ class UserInformationForm(forms.ModelForm):
 	class Meta:
 		model = Usuario
 		exclude = ('user',)
+
+class ContactForm(forms.Form):
+	subject = forms.CharField(max_length=200, label='Asunto')
+	first_name = forms.CharField(max_length=100, label='Nombre')
+	last_name = forms.CharField(max_length=100, label='Apellido')
+	sender = forms.EmailField(label='Correo')
+	message = forms.CharField(widget=forms.Textarea, label='Mensaje')

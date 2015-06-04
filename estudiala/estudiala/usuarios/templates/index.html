@@ -74,7 +74,7 @@
 							{% endif %}
 
 						</div>
-						
+
 						<a href="#three" class="more scrolly">Ver más</a>
 					</section>
 
@@ -102,10 +102,10 @@
 					{% if user.is_authenticated %}
 					<section id="tarea" class="wrapper style3 special">
 						<h3>Manda tu tarea</h3>
-						
-						
+
+
 						<iframe src="{% url 'homework' %}" width="50%" height="700px" align="center"></iframe>
-						
+
 						</section>
 					{% else %}
 					<!-- Three -->
@@ -167,7 +167,7 @@
 						<ul class="icons">
 							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
 							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+							<li><a href="{% url 'contact' %}" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
 						</ul>
 						<ul class="copyright">
 							<li>&copy; Estudia.la</li><li>Dev.F Batch 4</a></li>
