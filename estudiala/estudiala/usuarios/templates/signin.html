@@ -3,12 +3,11 @@
 		<title>Estudia.la</title>
 		<meta charset="utf-8" />
     {% load staticfiles%}
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/mainsign.css' %}" />
 		<link rel="import" href="{% static 'components/nuevasala-fab/nuevasala-fab.html' -%}">
 
-                <script src="{% static 'components/webcomponentsjs/webcomponents.js' %}"></script>
+            <script src="{% static 'components/webcomponentsjs/webcomponents.js' %}"></script>
 
 	</head>
 
@@ -53,19 +52,31 @@
 							</ul>
 						</nav>
 					</header>
-    <h1>Inicio se Sesión</h1>
-    <h2>Inicia sesión para acceder a todas las funciones de Estudia.la</h2>
-    <h2><a href="{% url 'home' %}">Home</a></h2>
-    <h2>¿No tienes cuenta?, registrate <a href="{% url 'signup' %}">aqui</a></h2>
-    <p>
-    	<section>
-			<form action="" method="post">
-				{% csrf_token %}
-				{{form.as_p}}
-				<input type="submit" value="Submit">
-			</form>
-		</section>
-	</p>
+
+
+					<!-- Banner -->
+					<section id="banner">
+					
+					</section>
+
+		<div id=signin width="50%">
+			
+			<br>		
+		    
+		    <h2>Inicia sesión para acceder a todas las funciones de Estudia.la</h2>
+		    
+		    <h2>¿No tienes cuenta?, registrate <a href="{% url 'signup' %}">aqui</a></h2>
+		    <p>
+		    	<section>
+					<form action="" method="post">
+						{% csrf_token %}
+						{{form.as_p}}
+						<input type="submit" value="Submit">
+					</form>
+				</section>
+			</p>
+
+		</div>	
 
 <!-- Footer -->
     <footer id="footer">
