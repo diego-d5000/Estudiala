@@ -18,7 +18,7 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<h1><a href="#banner" class="more scrolly"><img src="{% static 'images/logowhite.png' %}" height="20px" > Estudia.la</a></h1>
+						<h1><a href="{% url 'home' %}" class="more scrolly"><img src="{% static 'images/logowhite.png' %}" height="20px" > Estudia.la</a></h1>
 
 						<nav id="nav">
 							<ul>
@@ -56,15 +56,15 @@
 
 					<!-- Banner -->
 					<section id="banner">
-					
+
 					</section>
 
 		<div id=signin width="50%">
-			
-			<br>		
-		    
+
+			<br>
+
 		    <h2>Inicia sesión para acceder a todas las funciones de Estudia.la</h2>
-		    
+
 		    <h2>¿No tienes cuenta?, registrate <a href="{% url 'signup' %}">aqui</a></h2>
 		    <p>
 		    	<section>
@@ -76,7 +76,7 @@
 				</section>
 			</p>
 
-		</div>	
+		</div>
 
 <!-- Footer -->
     <footer id="footer">
