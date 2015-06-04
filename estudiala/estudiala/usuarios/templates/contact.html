@@ -1,16 +1,16 @@
-<!DOCTYPE HTML>
-
 <html>
 	<head>
 		<title>Estudia.la</title>
 		<meta charset="utf-8" />
     {% load staticfiles%}
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<link rel="stylesheet" href="{% static 'css/maintarea.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/mainsign.css' %}" />
 		<link rel="import" href="{% static 'components/nuevasala-fab/nuevasala-fab.html' -%}">
 
+            <script src="{% static 'components/webcomponentsjs/webcomponents.js' %}"></script>
+
 	</head>
+
 	<body class="landing">
 
 		<!-- Page Wrapper -->
@@ -18,30 +18,88 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<h1><a href="#banner" class="more scrolly"><img src="{% static 'images/logowhite.png' %}" height="20px" > Estudia.la</a></h1>
+						<h1><a href="{% url 'home' %}" class="more scrolly"><img src="{% static 'images/logowhite.png' %}" height="20px" > Estudia.la</a></h1>
+
+						<nav id="nav">
+							<ul>
+
+								<li class="special">
+									<a href="#menu" class="menuToggle"><span>Menu</span></a>
+									<div id="menu">
+										{% if user.is_authenticated %}
+											&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="https://www.aptitudesoftware.com/wp-content/uploads/Round-profile-2.png" alt="" width="80%">
+											<ul>
+										{% else %}
+											&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="http://www.zkoop.com/assets/empty_round_profile-9a29dae4df9eef222c331466c2ded02b.png" alt="" width="70%">
+											<ul>
+										{% endif %}
+
+
+											{% if user.is_authenticated %}
+										      <li><a href="#cursos">Cursos</a></li>
+										      <li><a href="#tareas">Enviar tarea</a></li>
+										      <li><a href="{% url 'close' %}">Cerrar Sesión</a></li>
+										    {% else %}
+										    <p>Inicia sesión o regístrate con tus redes sociales</p>
+											<li><a href="{% url 'signin' %}">Iniciar Sesion</a></li>
+											<li><a href="{% url 'signup' %}">Registrate</a></li>
+											<a href="{% url 'social:begin' 'facebook' %}"><img src="{% static 'images/facebook.svg' %}"></a>
+											<a href="{% url 'social:begin' 'twitter' %}"><img src="{% static 'images/twitter.svg' %}"></a>
+											{% endif %}
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</nav>
 					</header>
 
 
-				<!-- One -->
-				<div id="signin" style="width:90%" margin>
-					<form action="" method="post" enctype="multipart/form-data">
-					{% csrf_token %}
-					{{form.as_p}}
-					<input type="submit" value="Submit">
+					<!-- Banner -->
+					<section id="banner">
+
+					</section>
+
+		<div id=signin width="50%">
+
+			<br>
+
+		    <h2>Regálanos un poco de tu feedback <3</h2>
+
+
+		    <p>
+		    	<section>
+					<form action="" method="post">
+						{% csrf_token %}
+						{{form.as_p}}
+						<input type="submit" value="Submit">
 					</form>
-				</div>
+				</section>
+			</p>
 
-		<!-- Scripts -->
-			<script src="{% static 'js/jquery.min.js' %}" ></script>
-			<script src="{% static 'js/jquery.scrollex.min.js' %}" ></script>
-			<script src="{% static 'js/jquery.scrolly.min.js' %}" ></script>
-			<script src="{% static 'js/skel.min.js' %}" ></script>
-			<script src="{% static 'js/util.js' %}" ></script>
-			<script src="{% static 'js/main.js' %}" ></script>
-			<script type="text/javascript" src="assets/js/jquery.leanModal.min.js"></script>
+		</div>
 
-	</body>
+<!-- Footer -->
+    <footer id="footer">
+        <ul class="icons">
+            <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+			<li><a href="{% url 'contact' %}" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+        </ul>
+        <ul class="copyright">
+            <li>&copy; Estudia.la</li><li>Dev.F Batch 4</a></li>
+        </ul>
+    </footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="{% static 'js/jquery.min.js' %}" ></script>
+<script src="{% static 'js/jquery.scrollex.min.js' %}" ></script>
+<script src="{% static 'js/jquery.scrolly.min.js' %}" ></script>
+<script src="{% static 'js/skel.min.js' %}" ></script>
+<script src="{% static 'js/util.js' %}" ></script>
+<script src="{% static 'js/main.js' %}" ></script>
+<script type="text/javascript" src="assets/js/jquery.leanModal.min.js"></script>
+
+</body>
 </html>
-
-
-	
