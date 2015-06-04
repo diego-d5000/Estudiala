@@ -20,11 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'drvw+%uwf0j^xbat3m@wuuz#=a$x=fl2yyut^zh%uhw6*5z-yv'
+# os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True # os.environ["DEBUGMODE"]
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['estudiala.herokuapp.com']
 
 
 # Application definition

@@ -12,7 +12,7 @@
 
 <polymer-element name="nuevasala-fab" attributes="ct">
   <template>
-    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
     <link rel="stylesheet" href="nuevasala-fab.css">
 
     <a class="bs" on-click={{fabclick}}>Compartir conocimiento</a>
@@ -34,7 +34,7 @@
     </paper-dialog>
 
     <core-ajax id="ajaxpost"
-    url="http://localhost:8000/classroom/room/"
+    url="http://estudiala.herokuapp.com/classroom/room/"
     method="post"></core-ajax>
 
   </template>
@@ -45,7 +45,7 @@
       ct: '',
 
       ready: function() {
-        this.socket = io(':3000/');
+        this.socket = io('estudialachatserver.herokuapp.com');
       },
 
       fabclick: function() {

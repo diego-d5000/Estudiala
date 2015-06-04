@@ -20,7 +20,7 @@
 			  width="100%">
 			</google-youtube>
 		</paper-shadow>
-		<x-socketchat lheight="500px" namespace=":3000/{{nroom}}" user="{{user.first_name}} {{user.last_name}}" csrftoken="{{ csrf_token }}" roomid="{{roomid}}">
+		<x-socketchat lheight="500px" namespace="estudialachatserver.herokuapp.com/{{nroom}}" user="{{user.first_name}} {{user.last_name}}" csrftoken="{{ csrf_token }}" roomid="{{roomid}}">
 	</div>
 	<paper-shadow z="1" id="card-desc" class="card"> <h1> {% csrf_token %} </h1> </paper-shadow>
 </body>

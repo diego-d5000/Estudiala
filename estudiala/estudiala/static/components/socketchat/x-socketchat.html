@@ -30,14 +30,14 @@
     </paper-shadow>
 
     <core-ajax id ="ajaxget"
-    url="http://localhost:8000/classroom/chat"
+    url="http://estudiala.herokuapp.com/classroom/chat"
     params='{"id":{{roomid}}}'
     method="get"
     handleAs="json"
     on-core-response="{{fillChat}}"></core-ajax>
 
    <core-ajax id="ajaxpost"
-    url="http://localhost:8000/classroom/chat/"
+    url="http://estudiala.herokuapp.com/classroom/chat/"
     method="post"></core-ajax>
 
   </template>
@@ -46,17 +46,17 @@
     Polymer('x-socketchat', {
 
       namespace: '',
-      
+
       lheight: '',
-      
+
       user: '',
-      
+
       role: 'estudiante',
 
       csrftoken: '',
 
       roomid: '',
-      
+
       data: [],
 
       fillChat: function(e, res){
@@ -70,14 +70,14 @@
          document.querySelector('x-socketchat').data.push(msg);
         });
       },
-      
+
       sendMsg: function() {
         this.socket.emit('chat message', {username: this.user, role: this.role, text: this.$.msgTxt.value});
          this.$.ajaxpost.params = {username: this.user, role: this.role, text: this.$.msgTxt.value, date: 'hoy', csrfmiddlewaretoken: this.csrftoken, room:this.roomid};
          this.$.ajaxpost.go();
         this.$.msgTxt.value = "";
       }
-      
+
     });
   </script>
 </polymer-element>
