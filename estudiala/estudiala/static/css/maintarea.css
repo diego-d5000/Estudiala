@@ -1401,7 +1401,7 @@
 	}
 
 	body {
-		background: #2e3842;
+		background: #505393;
 	}
 
 		body.is-loading *, body.is-loading *:before, body.is-loading *:after {
@@ -1809,7 +1809,7 @@
 
 		input[type="checkbox"]:checked + label:before,
 		input[type="radio"]:checked + label:before {
-			background: #2e3842;
+			background: #505393;
 			color: #fff;
 			content: '\f00c';
 		}
@@ -2800,7 +2800,7 @@
 			}
 
 		.wrapper.style2 {
-			background-color: #2e3842;
+			background-color: #505393;
 		}
 
 		.wrapper.style3 {
@@ -2967,11 +2967,11 @@
 		}
 
 			.wrapper.style5 strong, .wrapper.style5 b {
-				color: #2E3842;
+				color: #505393;
 			}
 
 			.wrapper.style5 h2, .wrapper.style5 h3, .wrapper.style5 h4, .wrapper.style5 h5, .wrapper.style5 h6 {
-				color: #2E3842;
+				color: #505393;
 			}
 
 			.wrapper.style5 hr {
@@ -2999,7 +2999,7 @@
 			}
 
 			.wrapper.style5 label {
-				color: #2E3842;
+				color: #505393;
 			}
 
 			.wrapper.style5 input[type="text"],
@@ -3026,7 +3026,7 @@
 
 			.wrapper.style5 input[type="checkbox"]:checked + label:before,
 			.wrapper.style5 input[type="radio"]:checked + label:before {
-				background: #2E3842;
+				background: #5050393;
 				color: #ffffff;
 			}
 
@@ -3067,7 +3067,7 @@
 				}
 
 			.wrapper.style5 table th {
-				color: #2E3842;
+				color: #505393;
 			}
 
 			.wrapper.style5 table thead {
@@ -3088,7 +3088,7 @@
 			.wrapper.style5 button,
 			.wrapper.style5 .button {
 				box-shadow: inset 0 0 0 2px #dfdfdf;
-				color: #2E3842;
+				color: #505393;
 			}
 
 				.wrapper.style5 input[type="submit"]:hover,
@@ -3259,7 +3259,7 @@
 		-webkit-transition: background-color 0.2s ease;
 		-ms-transition: background-color 0.2s ease;
 		transition: background-color 0.2s ease;
-		background: #2e3842;
+		background: #505393;
 		height: 3em;
 		left: 0;
 		line-height: 3em;
@@ -3394,8 +3394,8 @@
 		-ms-justify-content: center;
 		justify-content: center;
 		cursor: default;
-		height: 100vh;
-		min-height: 35em;
+		height: 1vh;
+		min-height: 1em;
 		overflow: hidden;
 		position: relative;
 		text-align: center;
@@ -3514,7 +3514,7 @@
 			-ms-transition-delay: 1.25s;
 			transition-delay: 1.25s;
 			content: '';
-			background: #2e3842;
+			background: #505393;
 			display: block;
 			width: 100%;
 			height: 100%;
@@ -3634,10 +3634,10 @@
 
 	#main > header {
 		padding: 12em 0 10em 0;
-		background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("http://imageshack.com/a/img911/9371/fgzMtK.jpg");
-		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("http://imageshack.com/a/img911/9371/fgzMtK.jpg");
-		background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("http://imageshack.com/a/img911/9371/fgzMtK.jpg");
-		background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("http://imageshack.com/a/img911/9371/fgzMtK.jpg");
+		background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+		background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+		background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5));
 		background-attachment: fixed;
 		background-position: center center;
 		background-repeat: no-repeat;
@@ -3784,10 +3784,10 @@
 /* Landing */
 
 	body.landing #page-wrapper {
-		background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("http://imageshack.com/a/img911/9371/fgzMtK.jpg");
-		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("http://imageshack.com/a/img911/9371/fgzMtK.jpg");
-		background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("http://imageshack.com/a/img911/9371/fgzMtK.jpg");
-		background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("http://imageshack.com/a/img911/9371/fgzMtK.jpg");
+		background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+		background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+		background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5));
 		background-attachment: fixed;
 		background-position: center center;
 		background-repeat: no-repeat;
@@ -3819,12 +3819,12 @@
 	}
 
 
-#signin {
-	width: 100%;
-	display: none;
-	margin-left: 1em;
+#tarea {
+	width: 90%;
+	
+	margin-left: 10em;
 	margin-right: auto;
-	position: absolute;
-	margin-top: -20%;
+	position: center;
+	margin-top: 3em;
 	z-index: 2;
 }
