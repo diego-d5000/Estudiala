@@ -106,7 +106,7 @@ class contact(View):
 				mail.send()
 				return redirect('home')
 			except:
-				return redirect('homework_error')
+				return redirect('home')
 		else:
 			return render(request, self.template_name, locals())
 
